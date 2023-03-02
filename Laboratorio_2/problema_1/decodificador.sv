@@ -34,16 +34,16 @@ module display_7(input logic [5:0] display_in, output logic [13:0] display_out);
 
 	always_comb
 	case(display_in)
-		6'b000000: display_out = 14'b00000001000000; //00
-		6'b000001: display_out = 14'b00000001111001; //01
-		6'b000010: display_out = 14'b00000000100100; //02
-		6'b000011: display_out = 14'b00000000110000; //03
-		6'b000100: display_out = 14'b00000000011001; //04
-		6'b000101: display_out = 14'b00000000010010; //05
-		6'b000110: display_out = 14'b00000000000010; //06
-		6'b000111: display_out = 14'b00000001111000; //07
-		6'b001000: display_out = 14'b00000000000000; //08
-		6'b001001: display_out = 14'b00000000011000; //09
+		6'b000000: display_out = 14'b10000001000000; //00
+		6'b000001: display_out = 14'b10000001111001; //01
+		6'b000010: display_out = 14'b10000000100100; //02
+		6'b000011: display_out = 14'b10000000110000; //03
+		6'b000100: display_out = 14'b10000000011001; //04
+		6'b000101: display_out = 14'b10000000010010; //05
+		6'b000110: display_out = 14'b10000000000010; //06
+		6'b000111: display_out = 14'b10000001111000; //07
+		6'b001000: display_out = 14'b10000000000000; //08
+		6'b001001: display_out = 14'b10000000011000; //09
 		6'b001010: display_out = 14'b11110011000000; //10
 		6'b001011: display_out = 14'b11110011111001; //11
 		6'b001100: display_out = 14'b11110010100100; //12
