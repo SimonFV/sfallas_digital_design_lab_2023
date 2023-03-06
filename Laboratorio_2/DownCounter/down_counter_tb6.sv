@@ -1,7 +1,7 @@
-module down_counter_tb;
+module down_counter_tb6;
 
   // parametros
-  parameter N = 4; // numero de bits del contador
+  parameter N = 6; // numero de bits del contador
 
   // señales
   logic clk;

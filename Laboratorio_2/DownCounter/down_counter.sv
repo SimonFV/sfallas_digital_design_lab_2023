@@ -1,7 +1,6 @@
 
 module down_counter #(parameter N = 6) (input logic clk, input logic reset, output logic [N-1:0] q, output logic [13:0] s);
 
-//logic [5:0] display_in; 
 
 display_7 display(q, s);
 
