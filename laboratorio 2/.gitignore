@@ -3,6 +3,7 @@
 /db
 /simulation
 /incremental_db
+/work
 *.sof
 *.rpt
 *.summary
@@ -31,4 +32,8 @@
 obj
 *.swp
 *.a
+*.mti
+*.mpf
+*.wlf
+transcript
 nios_workspace
