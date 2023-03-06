@@ -1,0 +1,96 @@
+# Compile of Adder_4_bits.vhd was successful.
+# Compile of testbench.vhd was successful with warnings.
+# 2 compiles, 0 failed with no errors.
+vsim testbench
+# vsim testbench 
+# Start time: 20:52:37 on Mar 05,2023
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.testbench(behavoir)
+# Loading work.adder_4_bits(arch)
+# ** Warning: (vsim-3473) Component instance "a0 : FullAdder" is not bound.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/uut File: C:/Users/XT/Documents/QuartusPrimeProjects/Adder_4_bits.vhd
+# ** Warning: (vsim-3473) Component instance "a1 : FullAdder" is not bound.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/uut File: C:/Users/XT/Documents/QuartusPrimeProjects/Adder_4_bits.vhd
+# ** Warning: (vsim-3473) Component instance "a2 : FullAdder" is not bound.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/uut File: C:/Users/XT/Documents/QuartusPrimeProjects/Adder_4_bits.vhd
+# ** Warning: (vsim-3473) Component instance "a3 : FullAdder" is not bound.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/uut File: C:/Users/XT/Documents/QuartusPrimeProjects/Adder_4_bits.vhd
+# ** Warning: (vsim-8684) No drivers exist on out port /testbench/uut/S(3), and its initial value is not used.
+# Therefore, simulation behavior may occur that is not in compliance with
+# the VHDL standard as the initial values come from the base signal /testbench/S(3).
+# ** Warning: (vsim-8684) No drivers exist on out port /testbench/uut/S(2), and its initial value is not used.
+# Therefore, simulation behavior may occur that is not in compliance with
+# the VHDL standard as the initial values come from the base signal /testbench/S(2).
+# ** Warning: (vsim-8684) No drivers exist on out port /testbench/uut/S(1), and its initial value is not used.
+# Therefore, simulation behavior may occur that is not in compliance with
+# the VHDL standard as the initial values come from the base signal /testbench/S(1).
+# ** Warning: (vsim-8684) No drivers exist on out port /testbench/uut/S(0), and its initial value is not used.
+# Therefore, simulation behavior may occur that is not in compliance with
+# the VHDL standard as the initial values come from the base signal /testbench/S(0).
+# ** Warning: (vsim-8684) No drivers exist on out port /testbench/uut/Co, and its initial value is not used.
+# Therefore, simulation behavior may occur that is not in compliance with
+# the VHDL standard as the initial values come from the base signal /testbench/Co.
+add wave *
+run 10ns
+quit -sim
+# End time: 20:56:22 on Mar 05,2023, Elapsed time: 0:03:45
+# Errors: 0, Warnings: 12
+# Compile of Adder_4_bits.vhd was successful.
+# Compile of testbench.vhd was successful with warnings.
+# 2 compiles, 0 failed with no errors.
+vsim testbench
+# vsim testbench 
+# Start time: 20:56:30 on Mar 05,2023
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.testbench(behavoir)
+# Loading work.adder_4_bits(arch)
+# ** Warning: (vsim-3473) Component instance "a0 : FullAdder" is not bound.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/uut File: C:/Users/XT/Documents/QuartusPrimeProjects/Adder_4_bits.vhd
+# ** Warning: (vsim-3473) Component instance "a1 : FullAdder" is not bound.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/uut File: C:/Users/XT/Documents/QuartusPrimeProjects/Adder_4_bits.vhd
+# ** Warning: (vsim-3473) Component instance "a2 : FullAdder" is not bound.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/uut File: C:/Users/XT/Documents/QuartusPrimeProjects/Adder_4_bits.vhd
+# ** Warning: (vsim-3473) Component instance "a3 : FullAdder" is not bound.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/uut File: C:/Users/XT/Documents/QuartusPrimeProjects/Adder_4_bits.vhd
+# ** Warning: (vsim-8684) No drivers exist on out port /testbench/uut/S(3), and its initial value is not used.
+# Therefore, simulation behavior may occur that is not in compliance with
+# the VHDL standard as the initial values come from the base signal /testbench/S(3).
+# ** Warning: (vsim-8684) No drivers exist on out port /testbench/uut/S(2), and its initial value is not used.
+# Therefore, simulation behavior may occur that is not in compliance with
+# the VHDL standard as the initial values come from the base signal /testbench/S(2).
+# ** Warning: (vsim-8684) No drivers exist on out port /testbench/uut/S(1), and its initial value is not used.
+# Therefore, simulation behavior may occur that is not in compliance with
+# the VHDL standard as the initial values come from the base signal /testbench/S(1).
+# ** Warning: (vsim-8684) No drivers exist on out port /testbench/uut/S(0), and its initial value is not used.
+# Therefore, simulation behavior may occur that is not in compliance with
+# the VHDL standard as the initial values come from the base signal /testbench/S(0).
+# ** Warning: (vsim-8684) No drivers exist on out port /testbench/uut/Co, and its initial value is not used.
+# Therefore, simulation behavior may occur that is not in compliance with
+# the VHDL standard as the initial values come from the base signal /testbench/Co.
+add wave *
+run 10ns
+quit -sim
+# End time: 20:59:33 on Mar 05,2023, Elapsed time: 0:03:03
+# Errors: 0, Warnings: 12
+# Compile of Adder_4_bits.vhd was successful.
+# Compile of testbench.vhd was successful with warnings.
+# Compile of FullAdder.vhd was successful.
+# 3 compiles, 0 failed with no errors.
+vsim testbench
+# vsim testbench 
+# Start time: 21:00:05 on Mar 05,2023
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.testbench(behavoir)
+# Loading work.adder_4_bits(arch)
+# Loading work.fulladder(fast)
+add wave *
+run 10ns
+run 10ns
+# End time: 21:15:59 on Mar 05,2023, Elapsed time: 0:15:54
+# Errors: 0, Warnings: 3
