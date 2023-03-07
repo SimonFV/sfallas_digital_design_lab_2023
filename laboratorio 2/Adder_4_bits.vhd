@@ -7,7 +7,9 @@ entity Adder_4_bits is
 		A, B : in STD_LOGIC_VECTOR (3 downto 0);
 		Ci : in STD_LOGIC;
 		S : out STD_LOGIC_VECTOR (3 downto 0);
-		Co : out STD_LOGIC);
+		Co : out STD_LOGIC;
+		Sd : out STD_LOGIC_VECTOR (3 downto 0)
+		);
 
 end Adder_4_bits;
 
@@ -29,5 +31,6 @@ begin
 	a1 : FullAdder port map (A(1), B(1), C(1), C(2) , S(1));
 	a2 : FullAdder port map (A(2), B(2), C(2), C(3) , S(2));
 	a3 : FullAdder port map (A(3), B(3), C(3), Co , S(3));
-	
+		
 end arch;
+

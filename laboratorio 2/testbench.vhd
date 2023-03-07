@@ -48,6 +48,11 @@ begin
 		A <= "0000";
 		B <= "0111";
 		
+		wait for 10ns;
+		
+		A <= "1111";
+		B <= "0111";
+		
 		wait;
 	end process;
 	
