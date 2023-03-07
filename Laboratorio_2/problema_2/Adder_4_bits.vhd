@@ -7,8 +7,7 @@ entity Adder_4_bits is
 		A, B : in STD_LOGIC_VECTOR (3 downto 0);
 		Ci : in STD_LOGIC;
 		S : out STD_LOGIC_VECTOR (3 downto 0);
-		Co : out STD_LOGIC;
-		Sd : out STD_LOGIC_VECTOR (3 downto 0)
+		Co : out STD_LOGIC
 		);
 
 end Adder_4_bits;
