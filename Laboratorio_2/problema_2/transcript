@@ -1,0 +1,29 @@
+# Compile of Adder_4_bits.vhd was successful.
+# Compile of FullAdder.vhd was successful.
+# Compile of testbench.vhd was successful with warnings.
+# 3 compiles, 0 failed with no errors.
+vsim textbench
+# vsim textbench 
+# Start time: 02:08:59 on Mar 07,2023
+# ** Error: (vsim-3170) Could not find 'textbench'.
+#         Searched libraries:
+#             C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/laboratorio 2/work
+# Error loading design
+# End time: 02:09:00 on Mar 07,2023, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 7
+vsim testbench
+# vsim testbench 
+# Start time: 02:09:36 on Mar 07,2023
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.testbench(behavoir)
+# Loading work.adder_4_bits(arch)
+# Loading work.fulladder(fast)
+add wave *
+run 10ns
+run 10ns
+run 10ns
+run 10ns
+# End time: 02:11:45 on Mar 07,2023, Elapsed time: 0:02:09
+# Errors: 0, Warnings: 1
