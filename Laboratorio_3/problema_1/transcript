@@ -1,0 +1,22 @@
+# Compile of alu.sv was successful.
+# Compile of full_adder.sv was successful.
+# Compile of nbit_adder.sv was successful.
+# Compile of alu_tb.sv was successful.
+# 4 compiles, 0 failed with no errors.
+vsim alu_tb
+# vsim alu_tb 
+# Start time: 21:59:16 on Mar 11,2023
+# Loading sv_std.std
+# Loading work.alu_tb
+# Loading work.alu
+# Loading work.nbit_adder
+# Loading work.full_adder
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for '_alu'.  Expected 4, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /alu_tb/_alu File: C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu_tb.sv Line: 7
+# ** Warning: (vsim-3722) C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu_tb.sv(7): [TFMPC] - Missing connection for port 'co'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'cin'. The port definition is at: C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/nbit_adder.sv(3).
+#    Time: 0 ps  Iteration: 0  Instance: /alu_tb/_alu/_adder File: C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu.sv Line: 3
+add wave *
+run 40ns
+# End time: 22:12:29 on Mar 11,2023, Elapsed time: 0:13:13
+# Errors: 0, Warnings: 5

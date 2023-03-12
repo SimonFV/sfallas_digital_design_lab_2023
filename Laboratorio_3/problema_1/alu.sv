@@ -1,6 +1,6 @@
-module alu #(parameter N = 4)(input logic [N-1:0] a, b, output logic [N-1:0] z);
+module alu #(parameter N = 8)(input logic [N-1:0] a, b, output logic [N-1:0] z, output logic co);
 
-
-alu_not _not(a, z);
+nbit_adder _adder(a, b, co, z );
+//alu_not _not(a, z);
 
 endmodule
