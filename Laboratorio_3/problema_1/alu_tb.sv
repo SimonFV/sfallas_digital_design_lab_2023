@@ -1,5 +1,24 @@
 module alu_tb();
 
+parameter N = 4;
+
+logic [N-1:0] a, b, z;
+logic co;
+
+alu #(N) _alu(a, b, z, co);
+
+initial begin
+
+a = 4'b0001;
+b = 4'b0001;
+#40;
+a = 4'b1011;
+b = 4'b0010;
+#40;
+
+end
+
+/*
 parameter N = 8;
 
 logic [N-1:0] a, b, z;
@@ -17,5 +36,7 @@ b = 8'b01100000;
 #40;
 
 end
+*/
+
 
 endmodule

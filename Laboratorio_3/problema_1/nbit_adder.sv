@@ -1,4 +1,4 @@
-module nbit_adder#(parameter N = 8)(
+module nbit_adder#(parameter N)(
 	input logic [N - 1:0] a, b, 
 	output logic co,
 	output logic [N-1:0] s);
