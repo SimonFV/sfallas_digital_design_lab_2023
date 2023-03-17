@@ -74,7 +74,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE alu_not.sv
 set_global_assignment -name SYSTEMVERILOG_FILE alu_tb.sv
 set_global_assignment -name SYSTEMVERILOG_FILE full_adder.sv
 set_global_assignment -name SYSTEMVERILOG_FILE nbit_adder.sv
-set_global_assignment -name SYSTEMVERILOG_FILE half_adder.sv
 set_global_assignment -name SYSTEMVERILOG_FILE andGate.sv
 set_global_assignment -name SYSTEMVERILOG_FILE orGate.sv
 set_global_assignment -name SYSTEMVERILOG_FILE xorGate.sv
