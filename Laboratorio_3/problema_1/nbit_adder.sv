@@ -1,5 +1,6 @@
 module nbit_adder#(parameter N)(
-	input logic [N - 1:0] a, b, 
+	input logic [N - 1:0] a, b,
+	input logic cin,
 	output logic co,
 	output logic [N-1:0] s);
 	
@@ -13,7 +14,7 @@ module nbit_adder#(parameter N)(
 		begin: generate_n_bit_adder
 		
 			if(i==0)
-				half_adder f (a[0], b[0], s[0], c[0]);
+				full_adder f (a[0], b[0], cin, c[0], s[0] );
 			else
 				full_adder f (a[i], b[i],  c[i-1], c[i], s[i]);
 				

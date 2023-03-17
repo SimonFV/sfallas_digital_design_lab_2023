@@ -1,4 +1,5 @@
-module alu #(parameter N = 4)(input logic [N-1:0] a, b, 
+module alu #(parameter N = 4)(input logic [N-1:0] a, b,
+										input logic cin,
 										input logic [3:0] selector,
 										output logic [N-1:0] z, 
 										output logic co);
@@ -18,16 +19,17 @@ module alu #(parameter N = 4)(input logic [N-1:0] a, b,
 		left_shift_logic #(N) shift_LL (a, b, resultSLL);
 		right_shift_arithmetic #(N) shift_RA (a, b, resultSRA);
 		left_shift_arithmetic #(N) shift_LA (a, b, resultSLA);
-		nbit_adder #(N) _adder(a, b, co, resultSuma );
+		nbit_adder #(N) _adder(a, b, cin, co, resultSuma);
+		nbit_adder #(N) _subs(a, (~b), cin, X, resultResta);
 		alu_not #(N) _not(a, resultNot);
 		andGate #(N) _and(a, b, resultAnd);
 		orGate #(N) _or(a, b, resultOr);
 		xorGate #(N) _xor(a, b, resultXor);
-
+		
 always_comb begin
 	case (selector)
 		4'b0000: z = resultSuma;  //0) suma
-		4'b0001: z = resultResta; //1) resta
+		4'b0001: z = resultResta + 1; //1) resta
 		4'b0010: z = resultNot;   //2) not
 		4'b0011: z = resultAnd;   //3) and
 		4'b0100: z = resultOr;    //4) or
