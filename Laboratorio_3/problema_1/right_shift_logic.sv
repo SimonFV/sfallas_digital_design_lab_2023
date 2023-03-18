@@ -1,29 +1,28 @@
 module right_shift_logic #(parameter N)(input logic [N-1:0] a, b, 
 													output logic [N-1:0] result);
 													
-													
-		reg [1:0] a_temp;
-		reg [1:0] result_temp;
-		right_shift_logic_1bit inst(a_temp, result_temp);
+								
+		genvar i, j;
 		
-		always_comb begin
-			for(int i = 0; i < b-2; i++) begin
-			
-				a_temp[0] = a[i];
-				a_temp[1] = a[i+1];
-				result[i] = result_temp[0];
-				result[i+1] = result_temp[1];
+		generate
+			for(i = 0; i<N; i++) begin:b1
+				
+				logic a_u[N-1:0];
+				for(j = 0; j<N; j++) begin:b2
+					if (j <= i) 
+						assign a_u[j] = a[N-1-i+j];
+					else
+						assign a_u[j] = 1'b0;
+					
+				end
+					
+				N_mux #(N, 1) mx(a_u, b, result[N-1-i]);
 				
 			end
-		end
+		endgenerate
 		
 
 endmodule
 
 
-module right_shift_logic_1bit (input logic [1:0] a,
-										output logic [1:0] result);							
 
-	assign result = a >> 1;
-
-endmodule

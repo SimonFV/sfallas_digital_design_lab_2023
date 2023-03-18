@@ -1,6 +1,6 @@
 module alu_tb();
 
-parameter N = 8;
+parameter N = 4;
 
 logic [N-1:0] a, b, result;
 logic [3:0] selector;
@@ -8,9 +8,62 @@ logic Cin, Neg, Zero, Cout, Overflow;
 
 alu #(N) _alu(a, b, selector, result, Cin, Neg, Zero, Cout, Overflow);
 
-/*
+
+
 initial begin
 
+Cin = 0;
+
+// Prueba Shift Left Logico
+selector = 4'b0111;
+a = 4'b0110;
+b = 4'b0001;
+#40;
+b = 4'b0000;
+#40;
+b = 4'b0011;
+#40;
+b = 4'b0010;
+#40;
+
+// Prueba Shift Right Logico
+selector = 4'b0110;
+a = 4'b0110;
+b = 4'b0001;
+#40;
+b = 4'b0000;
+#40;
+b = 4'b0011;
+#40;
+b = 4'b0010;
+#40;
+
+
+// Prueba Shift Left Aritmetico
+selector = 4'b1001;
+a = 4'b0110;
+b = 4'b0001;
+#40;
+b = 4'b0000;
+#40;
+b = 4'b0011;
+#40;
+b = 4'b0010;
+#40;
+
+// Prueba Shift Right Aritmetico
+selector = 4'b1000;
+a = 4'b1001;
+b = 4'b0001;
+#40;
+b = 4'b0000;
+#40;
+b = 4'b0011;
+#40;
+b = 4'b0010;
+#40;
+
+/*
 //Pruebas and
 
 selector = 4'b0011;
@@ -56,34 +109,6 @@ b = 4'b0110;
 assert (result === 4'b1111) else $error("xor failed.");
 #40;
 
-//Pruebas shift left arit
-
-selector = 4'b1001;
-a = 4'b0010;
-b = 4'b0001;
-#40;
-
-a = 4'b1011;
-b = 4'b0010;
-#40;
-
-
-*/
-
-initial begin
-
-selector = 4'b0110;
-a = 8'b00010110;
-b = 8'b00000001;
-#40;
-a = 8'b00010110;
-b = 8'b00000010;
-#40;
-a = 8'b10001000;
-b = 8'b00000011;
-#40;
-
-end
 
 //Pruebas suma
 
@@ -109,7 +134,10 @@ b = 4'b1011;
 
 #40;
 
-end
+*/
 
+
+
+end
 
 endmodule

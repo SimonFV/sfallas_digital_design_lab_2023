@@ -2,6 +2,7 @@ module alu #(parameter N = 8)(input logic [N-1:0] a, b,
 										input logic [3:0] selector,
 										output logic [N-1:0] result, 
 										output logic Cin, Neg, Zero, Cout, Overflow);
+										
 		logic Cout_Suma, Cout_Resta;
 		logic [N-1:0] resultSuma;
 		logic [N-1:0] resultResta;
@@ -13,7 +14,7 @@ module alu #(parameter N = 8)(input logic [N-1:0] a, b,
 		logic [N-1:0] resultSLL;
 		logic [N-1:0] resultSRA;
 		logic [N-1:0] resultSLA;
-									
+		
 		right_shift_logic #(N) shift_RL (a, b, resultSRL);										
 		left_shift_logic #(N) shift_LL (a, b, resultSLL);
 		right_shift_arithmetic #(N) shift_RA (a, b, resultSRA);
