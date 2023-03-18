@@ -4,9 +4,9 @@ parameter N = 8;
 
 logic [N-1:0] a, b, result;
 logic [3:0] selector;
-logic Neg, Zero, Cout, Overflow;
+logic Cin, Neg, Zero, Cout, Overflow;
 
-alu #(N) _alu(a, b, selector, result, Neg, Zero, Cout, Overflow);
+alu #(N) _alu(a, b, selector, result, Cin, Neg, Zero, Cout, Overflow);
 
 /*
 initial begin
@@ -67,7 +67,6 @@ a = 4'b1011;
 b = 4'b0010;
 #40;
 
-end
 
 */
 
@@ -86,6 +85,31 @@ b = 8'b00000011;
 
 end
 
+//Pruebas suma
+
+selector = 4'b0000;
+a = 4'b0001;
+b = 4'b1010;
+cin = 0;
+#40;
+a = 4'b1011;
+b = 4'b0110;
+#40;
+
+//Pruebas resta
+
+selector = 4'b0001;
+a = 4'b1010;
+b = 4'b0001;
+cin = 0;
+#40;
+a = 4'b0110;
+b = 4'b1011;
+
+
+#40;
+
+end
 
 
 endmodule
