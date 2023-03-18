@@ -1,5 +1,6 @@
 module nbit_adder#(parameter N)(
-	input logic [N - 1:0] a, b, 
+	input logic [N - 1:0] a, b,
+	input logic Cin,
 	output logic co,
 	output logic [N-1:0] s);
 	
