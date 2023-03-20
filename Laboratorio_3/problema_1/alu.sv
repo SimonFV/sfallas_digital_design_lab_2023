@@ -22,10 +22,10 @@ module alu #(parameter N = 8)(input logic [N-1:0] a, b,
 		left_shift_arithmetic #(N) shift_LA (a, b, resultSLA);
 		nbit_adder #(N) _adder(a, b, Cin, Cout_Suma, resultSuma);
 		nbit_adder #(N) _subs(a, (~b), Cin, Cout_Resta, resultResta);
-		alu_not #(N) _not(a, resultNot);
+		n_bit_not_gate #(N) _not(a, resultNot);
 		n_bit_and_gate #(N) _and(a, b, resultAnd);
-		orGate #(N) _or(a, b, resultOr);
-		xorGate #(N) _xor(a, b, resultXor);
+		n_bit_or_gate #(N) _or(a, b, resultOr);
+		n_bit_xor_gate #(N) _xor(a, b, resultXor);
 		
 always_comb begin
 	case (selector)

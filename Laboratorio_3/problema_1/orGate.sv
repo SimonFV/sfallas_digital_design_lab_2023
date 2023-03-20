@@ -1,7 +1,7 @@
-module orGate #(parameter N)(
-	input logic [N-1:0]a,
-	input logic [N-1:0]b,
-	output logic [N-1:0]out
+module orGate (
+	input logic a,
+	input logic b,
+	output logic out
 );
 
 	assign out = a | b;

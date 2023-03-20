@@ -1,6 +1,5 @@
-module n_bit_and_gate #(parameter N)(
+module n_bit_not_gate #(parameter N)(
 	input logic [N-1:0]a,
-	input logic [N-1:0]b,
 	output logic [N-1:0]out
 );
 
@@ -9,12 +8,12 @@ module n_bit_and_gate #(parameter N)(
 	generate
 	
 		for(i = 0; i < N; i = i + 1)
-		begin: generate_n_bit_and
+		begin: generate_n_bit_not
 		
 			if(i==0)
-				andGate f (a[0], b[0], out[0]);
+				alu_not f (a[0], out[0]);
 			else
-				andGate f (a[i], b[i], out[i]);
+				alu_not f (a[i], out[i]);
 				
 		end
 		

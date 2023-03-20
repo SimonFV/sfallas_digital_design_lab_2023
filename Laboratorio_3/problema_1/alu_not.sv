@@ -1,4 +1,4 @@
-module alu_not#(parameter N)(input logic [N-1:0] a, output logic [N-1:0] result);
+module alu_not (input logic a, output logic result);
 
 assign result = ~a;
 

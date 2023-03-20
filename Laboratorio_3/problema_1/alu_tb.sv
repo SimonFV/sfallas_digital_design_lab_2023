@@ -63,6 +63,19 @@ b = 4'b0011;
 b = 4'b0010;
 #40;
 
+//Pruebas not
+
+selector = 4'b0010;
+a = 4'b0001;
+#10;
+assert (result === 4'b1110) else $error("and failed.");
+#40;
+
+a = 4'b1001;
+#10;
+assert (result === 4'b0110) else $error("and failed.");
+#40;
+
 
 //Pruebas and
 
@@ -79,7 +92,7 @@ b = 4'b0110;
 assert (result === 4'b0000) else $error("and failed.");
 #40;
 
-/*
+
 //Pruebas or
 
 selector = 4'b0100;
@@ -110,7 +123,7 @@ b = 4'b0110;
 assert (result === 4'b1111) else $error("xor failed.");
 #40;
 
-
+/*
 //Pruebas suma
 
 selector = 4'b0000;
