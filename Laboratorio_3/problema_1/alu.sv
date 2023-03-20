@@ -38,10 +38,15 @@ always_comb begin
 		end
 		
 		4'b0001: begin			//1) resta
-		result = resultResta + 1;
-		Cout = Cout_Resta;
+		Cout = ~Cout_Resta;
 		Overflow = 0;
-		Neg = Cout_Resta;
+		Neg = Cout;
+		
+		if(Neg === 1)
+			result = ~(resultResta + 1) + 1;
+		else
+			result = resultResta + 1 ;
+			
 		Zero = result ? 0 : 1;
 		end
 		
