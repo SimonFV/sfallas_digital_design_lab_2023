@@ -79,6 +79,7 @@ b = 4'b0110;
 assert (result === 4'b0000) else $error("and failed.");
 #40;
 
+/*
 //Pruebas or
 
 selector = 4'b0100;

@@ -23,7 +23,7 @@ module alu #(parameter N = 8)(input logic [N-1:0] a, b,
 		nbit_adder #(N) _adder(a, b, Cin, Cout_Suma, resultSuma);
 		nbit_adder #(N) _subs(a, (~b), Cin, Cout_Resta, resultResta);
 		alu_not #(N) _not(a, resultNot);
-		andGate #(N) _and(a, b, resultAnd);
+		n_bit_and_gate #(N) _and(a, b, resultAnd);
 		orGate #(N) _or(a, b, resultOr);
 		xorGate #(N) _xor(a, b, resultXor);
 		
