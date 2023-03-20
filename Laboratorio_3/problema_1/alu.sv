@@ -1,7 +1,8 @@
 module alu #(parameter N = 8)(input logic [N-1:0] a, b,
 										input logic [3:0] selector,
+										input logic Cin,
 										output logic [N-1:0] result, 
-										output logic Cin, Neg, Zero, Cout, Overflow);
+										output logic  Neg, Zero, Cout, Overflow);
 										
 		logic Cout_Suma, Cout_Resta;
 		logic [N-1:0] resultSuma;
@@ -40,7 +41,7 @@ always_comb begin
 		result = resultResta + 1;
 		Cout = Cout_Resta;
 		Overflow = 0;
-		Neg = 0;
+		Neg = Cout_Resta;
 		Zero = result ? 0 : 1;
 		end
 		

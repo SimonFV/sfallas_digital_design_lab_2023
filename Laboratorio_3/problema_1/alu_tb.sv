@@ -6,7 +6,7 @@ logic [N-1:0] a, b, result;
 logic [3:0] selector;
 logic Cin, Neg, Zero, Cout, Overflow;
 
-alu #(N) _alu(a, b, selector, result, Cin, Neg, Zero, Cout, Overflow);
+alu #(N) _alu(a, b, selector, Cin, result, Neg, Zero, Cout, Overflow);
 
 
 
@@ -63,7 +63,7 @@ b = 4'b0011;
 b = 4'b0010;
 #40;
 
-/*
+
 //Pruebas and
 
 selector = 4'b0011;
@@ -115,7 +115,7 @@ assert (result === 4'b1111) else $error("xor failed.");
 selector = 4'b0000;
 a = 4'b0001;
 b = 4'b1010;
-cin = 0;
+Cin = 0;
 #40;
 a = 4'b1011;
 b = 4'b0110;
@@ -126,14 +126,14 @@ b = 4'b0110;
 selector = 4'b0001;
 a = 4'b1010;
 b = 4'b0001;
-cin = 0;
+Cin = 0;
 #40;
 a = 4'b0110;
 b = 4'b1011;
 
 
 #40;
-
+/*
 */
 
 
