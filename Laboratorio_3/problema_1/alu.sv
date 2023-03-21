@@ -1,4 +1,4 @@
-module alu #(parameter N = 8)(input logic [N-1:0] a, b,
+module alu #(parameter N = 4)(input logic [N-1:0] a, b,
 										input logic [3:0] selector,
 										input logic Cin,
 										output logic [N-1:0] result, 
@@ -28,7 +28,7 @@ module alu #(parameter N = 8)(input logic [N-1:0] a, b,
 		n_bit_xor_gate #(N) _xor(a, b, resultXor);
 		
 always_comb begin
-	case (selector)
+	case (~selector)
 		4'b0000: begin			//0) suma
 		result = resultSuma;
 		Cout = Cout_Suma;

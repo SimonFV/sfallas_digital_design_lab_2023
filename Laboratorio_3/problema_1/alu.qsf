@@ -82,4 +82,25 @@ set_global_assignment -name SYSTEMVERILOG_FILE n_bit_and_gate.sv
 set_global_assignment -name SYSTEMVERILOG_FILE n_bit_or_gate.sv
 set_global_assignment -name SYSTEMVERILOG_FILE n_bit_xor_gate.sv
 set_global_assignment -name SYSTEMVERILOG_FILE n_bit_not_gate.sv
+set_location_assignment PIN_AB12 -to a[0]
+set_location_assignment PIN_AC12 -to a[1]
+set_location_assignment PIN_AF9 -to a[2]
+set_location_assignment PIN_AF10 -to a[3]
+set_location_assignment PIN_AD11 -to b[0]
+set_location_assignment PIN_AD12 -to b[1]
+set_location_assignment PIN_AE11 -to b[2]
+set_location_assignment PIN_AC9 -to b[3]
+set_location_assignment PIN_AE12 -to Cin
+set_location_assignment PIN_V16 -to Zero
+set_location_assignment PIN_W16 -to Overflow
+set_location_assignment PIN_V17 -to Neg
+set_location_assignment PIN_V18 -to Cout
+set_location_assignment PIN_Y19 -to result[0]
+set_location_assignment PIN_W20 -to result[1]
+set_location_assignment PIN_W21 -to result[2]
+set_location_assignment PIN_Y21 -to result[3]
+set_location_assignment PIN_AA14 -to selector[0]
+set_location_assignment PIN_AA15 -to selector[1]
+set_location_assignment PIN_W15 -to selector[2]
+set_location_assignment PIN_Y16 -to selector[3]
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
