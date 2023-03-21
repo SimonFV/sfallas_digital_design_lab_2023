@@ -2,7 +2,8 @@ module alu #(parameter N = 4)(input logic [N-1:0] a, b,
 										input logic [3:0] selector,
 										input logic Cin,
 										output logic [N-1:0] result, 
-										output logic  Neg, Zero, Cout, Overflow);
+										output logic Neg, Zero, Cout, Overflow,
+										output logic [3:0] display_0, display_1);
 										
 		logic Cout_Suma, Cout_Resta;
 		logic [N-1:0] resultSuma;
@@ -27,19 +28,22 @@ module alu #(parameter N = 4)(input logic [N-1:0] a, b,
 		n_bit_or_gate #(N) _or(a, b, resultOr);
 		n_bit_xor_gate #(N) _xor(a, b, resultXor);
 		
+		sevenseg dis_0 (result[3:0], display_0);
+		sevenseg dis_1 (result[7:4], display_1);
+		
 always_comb begin
 	case (~selector)
 		4'b0000: begin			//0) suma
 		result = resultSuma;
 		Cout = Cout_Suma;
-		Overflow = 0;
+		Overflow = Cin ^ Cout;
 		Neg = 0;
 		Zero = result ? 0 : 1;
 		end
 		
 		4'b0001: begin			//1) resta
 		Cout = ~Cout_Resta;
-		Overflow = 0;
+		Overflow = Cin ^ Cout;
 		Neg = Cout;
 		
 		if(Neg === 1)
@@ -123,6 +127,27 @@ always_comb begin
 		end
 
 	endcase
+	
 end
 
+endmodule
+
+
+module sevenseg(input logic [3:0] data,
+					output logic [6:0] segments);
+	always_comb
+		case(data)
+			
+			0: segments = 7'b000_0001;
+			1: segments = 7'b100_1111;
+			2: segments = 7'b001_0010;
+			3: segments = 7'b000_0110;
+			4: segments = 7'b100_1100;
+			5: segments = 7'b010_0100;
+			6: segments = 7'b010_0000;
+			7: segments = 7'b000_1111;
+			8: segments = 7'b000_0000;
+			9: segments = 7'b000_1100;
+			default: segments = 7'b111_1111;
+		endcase
 endmodule

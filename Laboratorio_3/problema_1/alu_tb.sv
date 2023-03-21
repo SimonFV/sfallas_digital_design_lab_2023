@@ -5,13 +5,14 @@ parameter N = 4;
 logic [N-1:0] a, b, result;
 logic [3:0] selector;
 logic Cin, Neg, Zero, Cout, Overflow;
+logic [3:0] display_0, display_1;
 
-alu #(N) _alu(a, b, selector, Cin, result, Neg, Zero, Cout, Overflow);
+alu #(N) _alu(a, b, selector, Cin, result, Neg, Zero, Cout, Overflow, display_0, display_1);
 
 
 
 initial begin
-
+/*
 Cin = 0;
 
 // Prueba Shift Left Logico
@@ -123,33 +124,32 @@ b = 4'b0110;
 assert (result === 4'b1111) else $error("xor failed.");
 #40;
 
-/*
+*/
 //Pruebas suma
 
+Cin = 1;
 selector = 4'b0000;
 a = 4'b0001;
 b = 4'b1010;
-Cin = 0;
 #40;
+
+Cin = 0;
 a = 4'b1011;
 b = 4'b0110;
 #40;
 
 //Pruebas resta
 
+Cin = 1;
 selector = 4'b0001;
-a = 4'b1010;
-b = 4'b0001;
+a = 4'b1111;
+b = 4'b0000;
+#40;
+
 Cin = 0;
+a = 4'b0011;
+b = 4'b0011;
 #40;
-a = 4'b0110;
-b = 4'b1011;
-
-
-#40;
-/*
-*/
-
 
 
 end
