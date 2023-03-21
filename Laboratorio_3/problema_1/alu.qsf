@@ -93,7 +93,7 @@ set_location_assignment PIN_AC9 -to b[3]
 set_location_assignment PIN_AE12 -to Cin
 set_location_assignment PIN_V16 -to Zero
 set_location_assignment PIN_W16 -to Overflow
-set_location_assignment PIN_V17 -to Neg
+set_location_assignment PIN_AC30 -to Neg
 set_location_assignment PIN_V18 -to Cout
 set_location_assignment PIN_Y19 -to result[0]
 set_location_assignment PIN_W20 -to result[1]
@@ -103,4 +103,18 @@ set_location_assignment PIN_AA14 -to selector[0]
 set_location_assignment PIN_AA15 -to selector[1]
 set_location_assignment PIN_W15 -to selector[2]
 set_location_assignment PIN_Y16 -to selector[3]
+set_location_assignment PIN_AE26 -to display_0[0]
+set_location_assignment PIN_AE27 -to display_0[1]
+set_location_assignment PIN_AE28 -to display_0[2]
+set_location_assignment PIN_AG27 -to display_0[3]
+set_location_assignment PIN_AF28 -to display_0[4]
+set_location_assignment PIN_AG28 -to display_0[5]
+set_location_assignment PIN_AH28 -to display_0[6]
+set_location_assignment PIN_AJ29 -to display_0[7]
+set_location_assignment PIN_AH29 -to display_0[8]
+set_location_assignment PIN_AH30 -to display_0[9]
+set_location_assignment PIN_AG30 -to display_0[10]
+set_location_assignment PIN_AF29 -to display_0[11]
+set_location_assignment PIN_AF30 -to display_0[12]
+set_location_assignment PIN_AD27 -to display_0[13]
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

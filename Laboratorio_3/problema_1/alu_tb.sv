@@ -5,9 +5,9 @@ parameter N = 4;
 logic [N-1:0] a, b, result;
 logic [3:0] selector;
 logic Cin, Neg, Zero, Cout, Overflow;
-logic [3:0] display_0, display_1;
+logic [13:0] display_0;
 
-alu #(N) _alu(a, b, selector, Cin, result, Neg, Zero, Cout, Overflow, display_0, display_1);
+alu #(N) _alu(a, b, selector, Cin, result, Neg, Zero, Cout, Overflow, display_0);
 
 
 
@@ -140,7 +140,7 @@ b = 4'b0110;
 
 //Pruebas resta
 
-Cin = 1;
+Cin = 0;
 selector = 4'b0001;
 a = 4'b1111;
 b = 4'b0000;
