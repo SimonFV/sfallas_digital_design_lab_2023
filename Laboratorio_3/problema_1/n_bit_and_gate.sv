@@ -11,10 +11,7 @@ module n_bit_and_gate #(parameter N)(
 		for(i = 0; i < N; i = i + 1)
 		begin: generate_n_bit_and
 		
-			if(i==0)
-				andGate f (a[0], b[0], out[0]);
-			else
-				andGate f (a[i], b[i], out[i]);
+			andGate f (a[i], b[i], out[i]);
 				
 		end
 		

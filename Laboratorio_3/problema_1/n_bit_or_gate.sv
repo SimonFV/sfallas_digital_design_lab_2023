@@ -11,10 +11,7 @@ module n_bit_or_gate #(parameter N)(
 		for(i = 0; i < N; i = i + 1)
 		begin: generate_n_bit_or
 		
-			if(i==0)
-				orGate f (a[0], b[0], out[0]);
-			else
-				orGate f (a[i], b[i], out[i]);
+			orGate f (a[i], b[i], out[i]);
 				
 		end
 		
