@@ -37,7 +37,7 @@ always_comb begin
 		Cout = Cout_Suma;
 		Overflow = Cin ^ Cout;
 		Neg = 1;
-		Zero = result & Cout ? 0 : 1;
+		Zero = result | Cout ? 0 : 1;
 		end
 		
 		4'b0001: begin			//1) resta
@@ -50,7 +50,7 @@ always_comb begin
 		else
 			result = resultResta + 1 ;
 			
-		Zero = result & Cout ? 0 : 1;
+		Zero = result ? 0 : 1;
 		Neg = Zero ? 1 : ~Cout;
 		end
 		
