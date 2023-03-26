@@ -2,8 +2,7 @@ module alu #(parameter N = 4)(input logic [N-1:0] a, b,
 										input logic [3:0] selector,
 										input logic Cin,
 										output logic [N-1:0] result, 
-										output logic Neg, Zero, Cout, Overflow,
-										output logic [13:0] display_0);
+										output logic Neg, Zero, Cout, Overflow);
 										
 		logic Cout_Suma, Cout_Resta;
 		logic [N-1:0] resultSuma;
@@ -28,8 +27,6 @@ module alu #(parameter N = 4)(input logic [N-1:0] a, b,
 		n_bit_or_gate #(N) _or(a, b, resultOr);
 		n_bit_xor_gate #(N) _xor(a, b, resultXor);
 		
-		display_7 dis_0 (result, display_0);
-		
 always_comb begin
 	case (~selector)
 		4'b0000: begin			//0) suma
@@ -37,7 +34,7 @@ always_comb begin
 		Cout = Cout_Suma;
 		Overflow = Cin ^ Cout;
 		Neg = 1;
-		Zero = result & Cout ? 0 : 1;
+		Zero = result | Cout ? 0 : 1;
 		end
 		
 		4'b0001: begin			//1) resta
@@ -50,7 +47,7 @@ always_comb begin
 		else
 			result = resultResta + 1 ;
 			
-		Zero = result & Cout ? 0 : 1;
+		Zero = result ? 0 : 1;
 		Neg = Zero ? 1 : ~Cout;
 		end
 		
