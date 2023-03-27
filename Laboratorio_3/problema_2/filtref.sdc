@@ -35,19 +35,9 @@
 # Create Clock
 #**************************************************************
 
-# Create clock constraints
-create_clock -name clk -period 10.000 [get_ports {clk}]
-# Specify that clockone and clocktwo are unrelated by assigning
-# them to separate asynchronous groups      
-# set input and output delays
-set_input_delay 1.2 -clock clk [get_ports {a_in*}]
-set_input_delay 1.2 -clock clk [get_ports {b_in*}]
 
-set_output_delay 1.2 -clock clk [get_ports {result_out*}]
 
-#**************************************************************
-# Set Clock Groups
-#**************************************************************
+
 
 
 
