@@ -1,4 +1,4 @@
-module time_test #(parameter N = 32) (input logic clk, reset,
+module time_test #(parameter N = 2) (input logic clk, reset,
 												input logic [N-1:0] a_in, b_in,
 												input logic [3:0] selector_in,
 												input logic Cin_in,
