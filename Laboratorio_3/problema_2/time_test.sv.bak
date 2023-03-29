@@ -1,0 +1,14 @@
+module time_test #(parameter N = 2) (input logic clk);
+
+	logic [N-1:0] a, b, result;
+	logic [3:0] selector;
+	logic Cin, Neg, Zero, Cout, Overflow;
+	
+	registro registro_in();
+	
+	alu #(N) _alu(a, b, selector, Cin, result, Neg, Zero, Cout, Overflow);
+	
+	
+	
+endmodule
+

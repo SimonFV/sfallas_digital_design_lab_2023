@@ -1,0 +1,8 @@
+module N_mux #(parameter N = 2, parameter SELECT_W = 1) 
+	(input logic mux_in [N-1:0],
+	 input logic [SELECT_W-1:0] sel,
+	 output logic mux_out);
+  
+  assign mux_out = mux_in[sel];
+    
+endmodule

@@ -1,0 +1,5 @@
+module alu_not(input logic a, output logic z);
+
+assign z = ~a;
+
+endmodule

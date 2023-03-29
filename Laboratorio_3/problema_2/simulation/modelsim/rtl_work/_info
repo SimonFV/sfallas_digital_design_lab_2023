@@ -1,0 +1,483 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/simulation/modelsim
+valu
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 !s110 1679415069
+!i10b 1
+!s100 ^Mf:X@]HdMzFIikORWKJ>0
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IRN_=9X7SbR_0MJ89UO27j0
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+Z5 w1679414955
+Z6 8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu.sv
+Z7 FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu.sv
+!i122 4
+L0 1 133
+Z8 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z9 !s108 1679415069.000000
+Z10 !s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu.sv|
+Z11 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu.sv|
+!i113 1
+Z12 o-sv -work work
+Z13 !s92 -sv -work work +incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1
+Z14 tCvgOpt 0
+valu_not
+R1
+R2
+!i10b 1
+!s100 dZM]MTn[[[?^FPZhnoV2J1
+R3
+I^CG]9bCV5YSMK^gGJJM333
+R4
+S1
+R0
+Z15 w1679412900
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu_not.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu_not.sv
+!i122 5
+L0 1 5
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu_not.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu_not.sv|
+!i113 1
+R12
+R13
+R14
+valu_tb
+R1
+Z16 !s110 1679415070
+!i10b 1
+!s100 nF=;OTE_A4hkcXYhLBT801
+R3
+IUk1=>^7AbIHVBf6TW]F<T2
+R4
+S1
+R0
+w1679415041
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu_tb.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu_tb.sv
+!i122 16
+L0 1 158
+R8
+r1
+!s85 0
+31
+Z17 !s108 1679415070.000000
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu_tb.sv|
+!i113 1
+R12
+R13
+R14
+vandGate
+R1
+R2
+!i10b 1
+!s100 ;k<d[naH<zkT?`m^@3DEc3
+R3
+Ib9UI`F]AIBjDL0oS@Uof>2
+R4
+S1
+R0
+R15
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/andGate.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/andGate.sv
+!i122 8
+Z18 L0 1 9
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/andGate.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/andGate.sv|
+!i113 1
+R12
+R13
+R14
+nand@gate
+vfull_adder
+R1
+R2
+!i10b 1
+!s100 WT_:]WM4;FjC30^R<mZ;b3
+R3
+IRm4]H39FFkMPAI;gg4NS`0
+R4
+S1
+R0
+w1678726483
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/full_adder.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/full_adder.sv
+!i122 6
+L0 1 12
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/full_adder.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/full_adder.sv|
+!i113 1
+R12
+R13
+R14
+vleft_shift_arithmetic
+R1
+R2
+!i10b 1
+!s100 dBc3OBJG:P:KSH5?^O?k42
+R3
+Ic0GVZ3CQ>[dKJ9o4^olTH0
+R4
+S1
+R0
+w1679169896
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/left_shift_arithmetic.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/left_shift_arithmetic.sv
+!i122 3
+Z19 L0 1 23
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/left_shift_arithmetic.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/left_shift_arithmetic.sv|
+!i113 1
+R12
+R13
+R14
+vleft_shift_logic
+R1
+R2
+!i10b 1
+!s100 2bM1SCo[lNOF:@5oNaS:D1
+R3
+IM3?YB^eP0PG3zOdeDkaiT2
+R4
+S1
+R0
+w1679169904
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/left_shift_logic.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/left_shift_logic.sv
+!i122 1
+R19
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/left_shift_logic.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/left_shift_logic.sv|
+!i113 1
+R12
+R13
+R14
+vn_bit_and_gate
+R1
+R2
+!i10b 1
+!s100 86i>>EFJLCC:h0lLQPSHY3
+R3
+IWYi6gQa[;ncd?P:kmdPlW1
+R4
+S1
+R0
+w1679413188
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_and_gate.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_and_gate.sv
+!i122 12
+Z20 L0 1 20
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_and_gate.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_and_gate.sv|
+!i113 1
+R12
+R13
+R14
+vn_bit_not_gate
+R1
+R16
+!i10b 1
+!s100 TBZ=`J:[oge]j1daYBhz12
+R3
+I?;iM`0S>U[7V;_gJ;odZD3
+R4
+S1
+R0
+w1679413164
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_not_gate.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_not_gate.sv
+!i122 15
+L0 1 19
+R8
+r1
+!s85 0
+31
+R17
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_not_gate.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_not_gate.sv|
+!i113 1
+R12
+R13
+R14
+vn_bit_or_gate
+R1
+R16
+!i10b 1
+!s100 ?DH_ZWK^z2W6jlla4kmB73
+R3
+I7el7k9PSHSHBj<08P_YWX0
+R4
+S1
+R0
+w1679413179
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_or_gate.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_or_gate.sv
+!i122 13
+R20
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_or_gate.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_or_gate.sv|
+!i113 1
+R12
+R13
+R14
+vn_bit_xor_gate
+R1
+R16
+!i10b 1
+!s100 [8H4@VS<ozHeQ;gRB<:`Z0
+R3
+I_C:izRI9eMgIFK8GSIgdn2
+R4
+S1
+R0
+w1679413173
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_xor_gate.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_xor_gate.sv
+!i122 14
+R20
+R8
+r1
+!s85 0
+31
+R17
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_xor_gate.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/n_bit_xor_gate.sv|
+!i113 1
+R12
+R13
+R14
+vN_mux
+R1
+R2
+!i10b 1
+!s100 lW=z9UZ87dc_mlRG1=<f_0
+R3
+I8HhH2B2fSNP4JKh`LeFbM3
+R4
+S1
+R0
+w1679170066
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/N_mux.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/N_mux.sv
+!i122 11
+L0 1 15
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/N_mux.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/N_mux.sv|
+!i113 1
+R12
+R13
+R14
+n@n_mux
+vnbit_adder
+R1
+R2
+!i10b 1
+!s100 FZ[SQH8WGDza<BmdL^nYj3
+R3
+I=49CL]ofE`QmXhEBoaW;W0
+R4
+S1
+R0
+w1679154473
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/nbit_adder.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/nbit_adder.sv
+!i122 7
+L0 1 27
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/nbit_adder.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/nbit_adder.sv|
+!i113 1
+R12
+R13
+R14
+vorGate
+R1
+R2
+!i10b 1
+!s100 dIDf:1Ch4Aj8[ZB8bTEbc1
+R3
+IjH1]Mg_d_FT:WH[QLGo3e1
+R4
+S1
+R0
+R15
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/orGate.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/orGate.sv
+!i122 9
+R18
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/orGate.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/orGate.sv|
+!i113 1
+R12
+R13
+R14
+nor@gate
+vright_shift_arithmetic
+R1
+R2
+!i10b 1
+!s100 mg]TmmNZRl5^R0NMh@UR_2
+R3
+Ij^dbKcDAE;z]?L09h5_Um3
+R4
+S1
+R0
+w1679169888
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/right_shift_arithmetic.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/right_shift_arithmetic.sv
+!i122 2
+R19
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/right_shift_arithmetic.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/right_shift_arithmetic.sv|
+!i113 1
+R12
+R13
+R14
+vright_shift_logic
+R1
+R2
+!i10b 1
+!s100 ZK_OO_VT1`4`dbMH:@z^R3
+R3
+I6zaQkWEMdHeXUjYkzkini1
+R4
+S1
+R0
+w1679169908
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/right_shift_logic.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/right_shift_logic.sv
+!i122 0
+L0 1 25
+R8
+r1
+!s85 0
+31
+!s108 1679415068.000000
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/right_shift_logic.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/right_shift_logic.sv|
+!i113 1
+R12
+R13
+R14
+vsevenseg
+R1
+R2
+!i10b 1
+!s100 U]1aWd5@=?1_=`^4Q0M;P1
+R3
+IfMb[gT55Cz<E0UWjH98eg3
+R4
+S1
+R0
+R5
+R6
+R7
+!i122 4
+L0 136 18
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+vxorGate
+R1
+R2
+!i10b 1
+!s100 MRXHk^W=RPXAG9b=K[<aC0
+R3
+IVcezB_TdhN@Zf0z7GPGKm2
+R4
+S1
+R0
+R15
+8C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/xorGate.sv
+FC:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/xorGate.sv
+!i122 10
+R18
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/xorGate.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1|C:/Quartus_Projects/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/xorGate.sv|
+!i113 1
+R12
+R13
+R14
+nxor@gate
