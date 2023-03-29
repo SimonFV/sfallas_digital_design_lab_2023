@@ -1,0 +1,15 @@
+module alu_tb();
+
+logic a, z;
+
+alu _alu(a, z);
+
+initial begin
+
+a = 0;
+#40;
+a = 1;
+
+end
+
+endmodule

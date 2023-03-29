@@ -1,0 +1,5 @@
+module left_shift_logic(input logic [3:0] a, b, output logic [3:0] z);
+
+assign z = a << 1;
+
+endmodule

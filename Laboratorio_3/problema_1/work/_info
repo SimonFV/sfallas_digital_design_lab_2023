@@ -1,0 +1,111 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dG:/Programas/intelFPGA/20.1
+valu
+Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z1 !s110 1678593549
+!i10b 1
+!s100 GVGT5n[@D^11YbZIPefLd1
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I25A4=Ge^MkB02^V6R@>D:0
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+S1
+Z4 dC:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1
+w1678591442
+8C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu.sv
+FC:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu.sv
+!i122 8
+L0 1 6
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1678593549.000000
+!s107 C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu.sv|
+!i113 1
+Z7 o-work work -sv
+Z8 tCvgOpt 0
+valu_tb
+R0
+R1
+!i10b 1
+!s100 `H[:k2hU1Jc8;^6h_bnZQ3
+R2
+IOTA[dcLFYkDIIIoJe23e62
+R3
+S1
+R4
+w1678593115
+8C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu_tb.sv
+FC:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu_tb.sv
+!i122 11
+L0 1 20
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/alu_tb.sv|
+!i113 1
+R7
+R8
+vfull_adder
+R0
+R1
+!i10b 1
+!s100 k2;YmQiBzTh=52CVAB7gS1
+R2
+IRJmgjKzXJQHP]1oaG[nfM3
+R3
+S1
+R4
+w1678590793
+8C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/full_adder.sv
+FC:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/full_adder.sv
+!i122 9
+L0 1 12
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/full_adder.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/full_adder.sv|
+!i113 1
+R7
+R8
+vnbit_adder
+R0
+R1
+!i10b 1
+!s100 2;a4IjfV5JIOz@k41N=FJ3
+R2
+I42OQ0jl^2f@O4b]<WL2@=0
+R3
+S1
+R4
+w1678591605
+8C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/nbit_adder.sv
+FC:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/nbit_adder.sv
+!i122 10
+L0 1 14
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/nbit_adder.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/XT/Desktop/sfallas_digital_design_lab_2023/Laboratorio_3/problema_1/nbit_adder.sv|
+!i113 1
+R7
+R8
