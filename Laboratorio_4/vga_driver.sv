@@ -1,8 +1,9 @@
 module vga_driver(input clk_in, reset,			//clk: 25MHz
-						input [7:0] pixel_color, 	//RRRGGGBB (8 bits)
+						input [23:0] pixel_color, 	//RRRGGGBB (8 bits)
 						output h_sync, v_sync,
 						output [7:0] red_out, green_out, blue_out,//Color del VGA DAC
-						output sync_n_out, clk_out, blank_out		//Señales del VGA DAC
+						output sync_n_out, clk_out, blank_out,		//Señales del VGA DAC
+						output [31:0] next_x, next_y		//posicion del pixel
 						);
 						
 	
@@ -100,9 +101,9 @@ module vga_driver(input clk_in, reset,			//clk: 25MHz
             state_v <= (line_completed == 1) ? ((counter_v == BACK_V_SIZE) ? ACTIVE : BACK) : BACK;
          end
 			
-			red_reg <= (state_h == ACTIVE) ? ((state_v == ACTIVE) ? {pixel_color[7:5], 5'b00000} : 8'd_0) : 8'd_0;
-         green_reg <= (state_h == ACTIVE) ? ((state_v == ACTIVE) ? {pixel_color[4:2], 5'b00000} : 8'd_0) : 8'd_0;
-         blue_reg <= (state_h == ACTIVE) ? ((state_v == ACTIVE) ? {pixel_color[1:0], 6'b000000} : 8'd_0) : 8'd_0;
+			red_reg <= (state_h == ACTIVE) ? ((state_v == ACTIVE) ? pixel_color[23:16] : 8'd_0) : 8'd_0;
+         green_reg <= (state_h == ACTIVE) ? ((state_v == ACTIVE) ? pixel_color[15:8] : 8'd_0) : 8'd_0;
+         blue_reg <= (state_h == ACTIVE) ? ((state_v == ACTIVE) ? pixel_color[7:0] : 8'd_0) : 8'd_0;
 			
 		end
 	
@@ -117,5 +118,9 @@ module vga_driver(input clk_in, reset,			//clk: 25MHz
    assign clk_out = clk_in;
    assign sync_n_out = 0;
    assign blank_out = h_sync_reg & v_sync_reg;
+	
+	// The x/y coordinates that should be available on the NEXT cycle
+   assign next_x = (state_h == ACTIVE) ? counter_h : 32'd_0 ;
+   assign next_y = (state_v == ACTIVE) ? counter_v : 32'd_0 ;
 
 endmodule
