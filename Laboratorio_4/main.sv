@@ -38,7 +38,7 @@ module main(input clk_50Mhz,
 	
 	// El interprete retorna el valor de color que debe dibujar el driver VGA
 	// El driver tambien retorna la posicion del siguiente pixel que dibujara
-	vga_driver draw  (clk_25Mhz, _reset, pixel_color,
+	vga_driver_old draw (clk_25Mhz, _reset, pixel_color,
 							VGA_HS, VGA_VS, 
 							VGA_R, VGA_G, VGA_B, 
 							VGA_SYNC_N, VGA_CLK, VGA_BLANK_N,
