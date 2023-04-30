@@ -1,11 +1,5 @@
-module FSM_Debug(clk, reset, start,mov_left, grid);
-
-input logic clk;         //Señal del reloj
-input logic reset;       //Señal de reinicio(activo en alto)
-input logic start;
-input logic mov_left;    // 
-
-output int grid [0:3][0:3]; //Salida de la matriz del juego
+module FSM_Debug(input clk, reset, mov_right, mov_left, mov_up, mov_down,
+					  output int grid [0:3][0:3]);
 
 typedef enum logic [2:0]
 	{
@@ -18,45 +12,53 @@ typedef enum logic [2:0]
 
 	state_t state, next_state; //Estados actual y siguiente
 	
+	
+logic mov_right_prev, mov_left_prev, mov_up_prev, mov_down_prev;
+	
 //actual state logic
-always_ff @ (posedge reset /*or posedge clk*/, negedge mov_left, negedge start) begin
-	if (reset) state <= S_INIT;
+always_ff @ (posedge clk) begin
+
+	if (reset) begin
+		state <= S_INIT;
+	end
 	else begin
+		mov_right_prev <= mov_right;
+		mov_left_prev <= mov_left;
+		mov_up_prev <= mov_up;
+		mov_down_prev <= mov_down;
+		
+		state <= next_state;
+	end
+	
+end
+
 
 //next state logic
-
-	
-		case (state)
-			S_INIT: begin
+always_comb begin
+	case (state)
+		S_INIT: begin
 				
-				
-				if (~start) begin
-					
-					grid = '{'{2, 2, 2, 2}, '{2, 2, 2, 2}, '{2, 2, 2, 2}, '{2, 2, 2, 2}};
-					state <= S_PLAY;
-					
-				end
-				else state <= S_INIT;
-				
-			end
-				
-			S_PLAY: begin
-				
-				grid[0][0] <= 0;
-				if (~mov_left) begin 
-					
-					state <= S_INIT;
-				end
-				
-				state <= S_PLAY;
-				
-			end
+			grid = '{'{0, 0, 0, 0}, '{0, 0, 0, 0}, '{1, 1, 1, 1}, '{1, 1, 1, 1}};
 			
-			
-			default: state <= S_INIT;
-			
-		endcase
+			if (~mov_right & mov_right_prev) next_state = S_PLAY;
+			else next_state = S_INIT;
+				
 		end
+				
+		S_PLAY: begin
+			
+			grid = '{'{4, 4, 4, 4}, '{0, 0, 0, 0}, '{4, 4, 4, 4}, '{1, 1, 1, 1}};
+			
+			if (~mov_left & mov_left_prev) next_state = S_INIT;
+			else next_state = S_PLAY;
+				
+		end
+			
+			
+		default: next_state = S_INIT;
+			
+	endcase
+	
 end
 
 endmodule

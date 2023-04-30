@@ -29,14 +29,8 @@ module main(input clk_50Mhz, mov_left, mov_right, mov_up, mov_down,
 	logic lose_flag = 0;     //Señal de derrota (activo en alto)
 	logic [3:0] score = 0;
 	
-	//FSM_Debug _FSM_Debug(clk_25Mhz, reset, mov_right, mov_left, matrix);
-	always_comb begin
-		
-		if (reset)
-			matrix = '{'{3, 3, 3, 3}, '{3, 3, 3, 3}, '{3, 3, 3, 3}, '{3, 3, 3, 3}};
-		else
-			matrix = '{'{1, 1, 1, 1}, '{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}};
-	end
+	FSM_Debug _FSM_Debug(clk_25Mhz, reset, mov_right, mov_left, mov_up, mov_down, matrix);
+	
 	// Se procesa la matriz del juego con la posicion del pixel actual para
 	// determinar cual debera ser su color
 	interpreter inter (matrix, next_x, next_y, pixel_color);
@@ -44,7 +38,7 @@ module main(input clk_50Mhz, mov_left, mov_right, mov_up, mov_down,
 	
 	// El interprete retorna el valor de color que debe dibujar el driver VGA
 	// El driver tambien retorna la posicion del siguiente pixel que dibujara
-	vga_driver_old draw (clk_25Mhz, _reset, pixel_color,
+	vga_driver draw (clk_25Mhz, _reset, pixel_color,
 							VGA_HS, VGA_VS, 
 							VGA_R, VGA_G, VGA_B, 
 							VGA_SYNC_N, VGA_CLK, VGA_BLANK_N,

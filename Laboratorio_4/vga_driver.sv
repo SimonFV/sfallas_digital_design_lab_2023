@@ -20,11 +20,6 @@ module vga_driver(input clk_in, reset,			//clk: 25MHz
 				 BACK_V_LIMIT = 521;		//489 + 32
 	
 	
-	//Señales de sincronizacion y color
-	logic h_sync_signal;
-	logic v_sync_signal;
-	logic [7:0] red_signal, green_signal, blue_signal;
-	
 	
 	//Señales de los comparadores
 	logic let_active_h, let_front_h, let_pulse_h, let_back_h;
@@ -41,7 +36,6 @@ module vga_driver(input clk_in, reset,			//clk: 25MHz
 	logic reset_h;
 	logic reset_v;
 	logic h_line_completed;
-	
 	
 	
 	// Contadores
@@ -75,28 +69,23 @@ module vga_driver(input clk_in, reset,			//clk: 25MHz
 	
 		
 	//señales de sincronizacion
-	assign h_sync_signal = let_front_h | (let_back_h & ~let_pulse_h);
-	assign v_sync_signal = let_front_v | (let_back_v & ~let_pulse_v);
+	assign h_sync = let_front_h | (let_back_h & ~let_pulse_h);
+	assign v_sync = let_front_v | (let_back_v & ~let_pulse_v);
 		
 			
-	assign red_signal = pixel_color[23:16] & let_active_h & let_active_v;
-   assign green_signal = pixel_color[15:8] & let_active_h & let_active_v;
-   assign blue_signal = pixel_color[7:0] & let_active_h & let_active_v;
+	assign red_out = (let_active_h & let_active_v) ? pixel_color[23:16] : 8'd_0;
+   assign green_out = (let_active_h & let_active_v) ? pixel_color[15:8] : 8'd_0;
+   assign blue_out = (let_active_h & let_active_v) ? pixel_color[7:0] : 8'd_0;
 	
 	
 	//Salidas
 	
-	assign h_sync = h_sync_signal;
-	assign v_sync = v_sync_signal;
-	assign red_out = red_signal;
-   assign green_out = green_signal;
-   assign blue_out = blue_signal;
    assign clk_out = clk_in;
    assign sync_n_out = 0;
-   assign blank_out = h_sync_signal & v_sync_signal;
+   assign blank_out = h_sync & v_sync;
 	
 	// Coordenadas x y del siguiente pixel
-   assign next_x = counter_h & let_active_h ;
-   assign next_y = counter_v & let_active_v ;
+   assign next_x = let_active_h ? counter_h : 0;
+   assign next_y = let_active_v ? counter_v : 0;
 
 endmodule

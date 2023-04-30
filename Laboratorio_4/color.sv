@@ -1,8 +1,8 @@
-module color(input [3:0] value, output [23:0] pixel_color);
+module color(input int value, output [23:0] pixel_color);
 	
 	always_comb begin
 		case (value)
-			0: pixel_color = 24'b111111111111111110011001;
+			0: pixel_color = 24'b000111000001110000011100;
 			1: pixel_color = 24'b111111111111111111001100;
 			2: pixel_color = 24'b111111111111111111100110;
 			3: pixel_color = 24'b111111111100110010011001;
@@ -14,7 +14,8 @@ module color(input [3:0] value, output [23:0] pixel_color);
 			9: pixel_color = 24'b110011000110011001100110;
 			10: pixel_color = 24'b100110010011001100110011;
 			11: pixel_color = 24'b110011001111111111001100;
-			default: pixel_color = 24'b110111001101110011011100;
+			12: pixel_color = 24'b000011000000110000001100;
+			default: pixel_color = 24'b000011000000110000001100;
 		endcase
 	end
 	
