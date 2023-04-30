@@ -30,8 +30,9 @@ typedef enum logic [2:0]
 
 int row, col;
 
+
 //actual state logic
-always @ (negedge clk or negedge reset)
+always @ (negedge clk, negedge reset)
 	if (~reset) begin
 		curr_state = S_INIT;
 		end
@@ -41,7 +42,7 @@ always @ (negedge clk or negedge reset)
 
 
 //next state logic
-always @ (negedge clk)
+always @ (negedge clk, negedge ~mov_left, negedge ~mov_right, negedge ~mov_up, negedge ~mov_down)
 		case (curr_state)
 			S_INIT: begin
 							if(~start)
