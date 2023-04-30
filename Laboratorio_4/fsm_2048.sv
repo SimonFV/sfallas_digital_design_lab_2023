@@ -261,14 +261,14 @@ always @ (negedge clk, negedge ~mov_left, negedge ~mov_right, negedge ~mov_up, n
 			S_NEW_BLOCK:
 						begin
 					  int row, col;
-					  logic counter;
-					  counter=0;
+					  logic count;
+					  count=0;
 					  // Se revisa si hay celdas vacías y si encuentra alguna agrega un 2 ahí
 					  for (row = 0; row < 4; row++) begin
 						 for (col = 0; col < 4; col++) begin
-							if (grid[row][col] == 0 && ~counter) begin
-								grid[1][0] = 2;
-								counter=1; 
+							if (grid[row][col] == 0 && ~count) begin
+								grid[row][col] = 2;
+								count=1; 
 							end
 						 end
 					  end

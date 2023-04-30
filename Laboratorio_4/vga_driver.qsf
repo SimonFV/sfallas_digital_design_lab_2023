@@ -92,22 +92,23 @@ set_location_assignment PIN_E12 -to VGA_R[6]
 set_location_assignment PIN_F13 -to VGA_R[7]
 set_location_assignment PIN_C10 -to VGA_SYNC_N
 set_location_assignment PIN_D11 -to VGA_VS
-set_global_assignment -name EDA_TEST_BENCH_NAME fsm_2048_tb -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id fsm_2048_tb
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME fsm_2048_tb -section_id fsm_2048_tb
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_AB12 -to reset
+set_location_assignment PIN_AA14 -to mov_right
+set_location_assignment PIN_Y16 -to mov_left
+set_location_assignment PIN_AA15 -to mov_up
+set_location_assignment PIN_W15 -to mov_down
+set_global_assignment -name EDA_TEST_BENCH_FILE vga_driver_tb.sv -section_id vga_driver_tb
+set_global_assignment -name SYSTEMVERILOG_FILE fsm_2048.sv
 set_global_assignment -name SYSTEMVERILOG_FILE counter.sv
 set_global_assignment -name SYSTEMVERILOG_FILE vga_driver.sv
 set_global_assignment -name SYSTEMVERILOG_FILE vga_driver_tb.sv
 set_global_assignment -name SYSTEMVERILOG_FILE main.sv
 set_global_assignment -name SYSTEMVERILOG_FILE interpreter.sv
 set_global_assignment -name SYSTEMVERILOG_FILE color.sv
-set_global_assignment -name SYSTEMVERILOG_FILE fsm_2048.sv
-set_global_assignment -name SYSTEMVERILOG_FILE fsm_2048_tb.sv
 set_global_assignment -name SYSTEMVERILOG_FILE comparator.sv
 set_global_assignment -name SYSTEMVERILOG_FILE vga_driver_old.sv
-set_global_assignment -name EDA_TEST_BENCH_FILE vga_driver_tb.sv -section_id vga_driver_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE fsm_2048_tb.sv -section_id fsm_2048_tb
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE FSM_Debug.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
