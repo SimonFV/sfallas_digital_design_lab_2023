@@ -13,23 +13,23 @@ module main(input clk_50Mhz,
 	logic [31:0] next_y = 32'd_0;
 	
 	// Matriz que contiene los datos de casillas del juego
-	logic [3:0][3:0][3:0] matrix;
-	assign matrix[0][0] = 4'b0000;
-	assign matrix[0][1] = 4'b0001;
-	assign matrix[0][2] = 4'b0010;
-	assign matrix[0][3] = 4'b0011;
-	assign matrix[1][0] = 4'b0100;
-	assign matrix[1][1] = 4'b0101;
-	assign matrix[1][2] = 4'b0110;
-	assign matrix[1][3] = 4'b0111;
-	assign matrix[2][0] = 4'b1000;
-	assign matrix[2][1] = 4'b1001;
-	assign matrix[2][2] = 4'b1010;
-	assign matrix[2][3] = 4'b1011;
-	assign matrix[3][0] = 4'b1100;
-	assign matrix[3][1] = 4'b1101;
-	assign matrix[3][2] = 4'b1110;
-	assign matrix[3][3] = 4'b1111;
+	int matrix [3:0][3:0];
+	assign matrix[0][0] = 1;
+	assign matrix[0][1] = 2;
+	assign matrix[0][2] = 3;
+	assign matrix[0][3] = 4;
+	assign matrix[1][0] = 5;
+	assign matrix[1][1] = 6;
+	assign matrix[1][2] = 7;
+	assign matrix[1][3] = 8;
+	assign matrix[2][0] = 9;
+	assign matrix[2][1] = 10;
+	assign matrix[2][2] = 11;
+	assign matrix[2][3] = 12;
+	assign matrix[3][0] = 13;
+	assign matrix[3][1] = 14;
+	assign matrix[3][2] = 15;
+	assign matrix[3][3] = 0;
 	
 	
 	// Se procesa la matriz del juego con la posicion del pixel actual para

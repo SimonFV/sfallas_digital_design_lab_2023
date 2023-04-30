@@ -1,8 +1,8 @@
-module interpreter(input [3:0][3:0][3:0] matrix,
+module interpreter(input int matrix [3:0][3:0],
 						 input [31:0] next_x, next_y,
 						 output [23:0] pixel_color);
 	
-	logic [3:0] value = 4'b0000;
+	int value = 0;
 	color col (value, pixel_color);
 	
 	always_comb begin

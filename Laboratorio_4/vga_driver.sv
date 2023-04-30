@@ -27,7 +27,7 @@ module vga_driver(input clk_in, reset,			//clk: 25MHz
 	
 	
 	//Señales de los comparadores
-	logic let_front_h, let_pulse_h, let_back_h;
+	logic let_active_h, let_front_h, let_pulse_h, let_back_h;
 	logic eq_active_h, eq_front_h, eq_pulse_h, eq_back_h;
 	logic let_active_v, let_front_v, let_pulse_v, let_back_v;
 	logic eq_active_v, eq_front_v, eq_pulse_v, eq_back_v;
@@ -94,7 +94,6 @@ module vga_driver(input clk_in, reset,			//clk: 25MHz
    assign clk_out = clk_in;
    assign sync_n_out = 0;
    assign blank_out = h_sync_signal & v_sync_signal;
-	assign counter_h_out = counter_h;
 	
 	// Coordenadas x y del siguiente pixel
    assign next_x = counter_h & let_active_h ;
