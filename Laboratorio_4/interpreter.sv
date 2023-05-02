@@ -1,4 +1,4 @@
-module interpreter(input int matrix [3:0][3:0],
+module interpreter(input int matrix [0:3][0:3],
 						 input [31:0] next_x, next_y,
 						 output [23:0] pixel_color);
 	
