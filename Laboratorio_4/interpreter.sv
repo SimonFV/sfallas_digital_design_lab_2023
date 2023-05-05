@@ -1,8 +1,8 @@
-module interpreter(input int matrix [0:3][0:3],
+module interpreter(input logic [3:0] matrix [0:3][0:3],
 						 input [31:0] next_x, next_y,
 						 output [23:0] pixel_color);
 	
-	int value = 0;
+	logic [3:0] value = 4'd_0;
 	color col (value, pixel_color);
 	
 	always_comb begin
@@ -25,7 +25,7 @@ module interpreter(input int matrix [0:3][0:3],
 		else if (next_x > 100 & next_x < 180 & next_y > 280 & next_y < 360) value = matrix[1][3];
 		else if (next_x > 190 & next_x < 270 & next_y > 280 & next_y < 360) value = matrix[2][3];
 		else if (next_x > 280 & next_x < 360 & next_y > 280 & next_y < 360) value = matrix[3][3];
-		else 	  value = 12;
+		else 	  value = 4'd_12;
 	
 	end
 	

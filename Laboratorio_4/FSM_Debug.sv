@@ -1,5 +1,5 @@
 module FSM_Debug(input clk, reset, mov_right, mov_left, mov_up, mov_down,
-					  output int grid [3:0][3:0]);
+					  output logic [3:0] grid [0:3][0:3]);
 
 typedef enum logic [3:0]
 	{
@@ -20,17 +20,21 @@ typedef enum logic [3:0]
 	
 	
 logic mov_right_prev, mov_left_prev, mov_up_prev, mov_down_prev;
-int grid_next [3:0][3:0]  = '{'{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}};
-int grid_first_gen [3:0][3:0] = '{'{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}};
-int grid_play [3:0][3:0] = '{'{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}};
-int grid_right [3:0][3:0] = '{'{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}};
-int grid_left [3:0][3:0] = '{'{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}};
-int grid_up [3:0][3:0] = '{'{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}};
-int grid_down [3:0][3:0] = '{'{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}};
+
+logic [3:0] grid_next [0:3][0:3];
+logic [3:0] grid_first_gen [0:3][0:3];
+logic [3:0] grid_play [0:3][0:3];
+logic [3:0] grid_right [0:3][0:3];
+logic [3:0] grid_left [0:3][0:3];
+logic [3:0] grid_up [0:3][0:3];
+logic [3:0] grid_down [0:3][0:3];
+
+logic move_done = 1;
+int count = 0;
 
 first_gen _firs_gen(grid, grid_first_gen);
 
-mov_right _mov_right(grid, grid_right);
+mov_right _mov_right(count, grid, grid_right);
 mov_left _mov_left(grid, grid_left);
 mov_up _mov_up(grid, grid_up);
 mov_down _mov_down(grid, grid_down);
@@ -52,6 +56,9 @@ always_ff @ (posedge clk) begin
 		
 		state <= next_state;
 		grid <= grid_next;
+		
+		if(move_done == 1) count <= 0;
+		else count <= count + 1;
 	end
 	
 end
@@ -64,21 +71,27 @@ always_comb begin
 	
 		INIT: begin
 			
-			grid_next = '{'{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}};
+			move_done = 1;
+			grid_next = '{'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
+							  '{4'd_0, 4'd_0, 4'd_0, 4'd_0},
+							  '{4'd_0, 4'd_0, 4'd_0, 4'd_0},
+							  '{4'd_0, 4'd_0, 4'd_0, 4'd_0}};
 			next_state = FIRST_GEN;
 				
 		end
 				
 		FIRST_GEN: begin
 			
+			move_done = 1;
 			grid_next = grid_first_gen;
 			next_state = PLAY;
-				
+			
 		end
 		
 		
 		PLAY: begin
 			
+			move_done = 1;
 			if (~mov_right & mov_right_prev) next_state = RIGHT;
 			else if (~mov_left & mov_left_prev) next_state = LEFT;
 			else if (~mov_up & mov_up_prev) next_state = UP;
@@ -89,13 +102,16 @@ always_comb begin
 		
 		RIGHT: begin
 			
+			move_done = 0;
 			grid_next = grid_right;
-			next_state = PLAY;
+			if(count > 8) next_state = PLAY;
+			else next_state = RIGHT;
 				
 		end
 		
 		LEFT: begin
 			
+			move_done = 0;
 			grid_next = grid_left;
 			next_state = PLAY;
 				
@@ -103,6 +119,7 @@ always_comb begin
 		
 		UP: begin
 			
+			move_done = 0;
 			grid_next = grid_up;
 			next_state = PLAY;
 				
@@ -110,6 +127,7 @@ always_comb begin
 		
 		DOWN: begin
 			
+			move_done = 0;
 			grid_next = grid_down;
 			next_state = PLAY;
 				
@@ -117,7 +135,10 @@ always_comb begin
 		
 			
 			
-		default: next_state = INIT;
+		default: begin
+			move_done = 1;
+			next_state = INIT;
+		end
 			
 	endcase
 		

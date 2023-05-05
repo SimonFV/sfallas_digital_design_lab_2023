@@ -14,20 +14,16 @@ module main(input clk_50Mhz, mov_left, mov_right, mov_up, mov_down,
 	logic [31:0] next_y = 32'd_0;
 	
 	// Matriz que contiene los datos de casillas del juego
-	int matrix [3:0][3:0] = '{'{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}, '{0, 0, 0, 0}};
+	logic [3:0] matrix [0:3][0:3] = '{'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
+												 '{4'd_0, 4'd_0, 4'd_0, 4'd_0},
+												 '{4'd_0, 4'd_0, 4'd_0, 4'd_0},
+												 '{4'd_0, 4'd_0, 4'd_0, 4'd_0}};
 	
-	
-	//logic start = 0;       //Señal para el inicio del juego
-	/*
-	logic mov_left = 1;    // 
-	logic mov_right = 1;   // Señales de dirección de movimiento
-	logic mov_up = 1;      // 
-	logic mov_down = 1;
-	*/
 	
 	logic win_flag = 0;      //Señal de victoria (activo en alto)
 	logic lose_flag = 0;     //Señal de derrota (activo en alto)
 	logic [3:0] score = 0;
+	
 	
 	FSM_Debug _FSM_Debug(clk_25Mhz, reset, mov_right, mov_left, mov_up, mov_down, matrix);
 	

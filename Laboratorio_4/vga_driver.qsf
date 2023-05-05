@@ -57,7 +57,7 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH vga_driver_tb -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH matriz_tb -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_NAME vga_driver_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id vga_driver_tb
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "10 ms" -section_id vga_driver_tb
@@ -92,13 +92,11 @@ set_location_assignment PIN_E12 -to VGA_R[6]
 set_location_assignment PIN_F13 -to VGA_R[7]
 set_location_assignment PIN_C10 -to VGA_SYNC_N
 set_location_assignment PIN_D11 -to VGA_VS
-set_location_assignment PIN_AB12 -to reset
+set_location_assignment PIN_AC12 -to reset
 set_location_assignment PIN_AA14 -to mov_right
 set_location_assignment PIN_Y16 -to mov_left
 set_location_assignment PIN_AA15 -to mov_up
 set_location_assignment PIN_W15 -to mov_down
-set_global_assignment -name EDA_TEST_BENCH_FILE vga_driver_tb.sv -section_id vga_driver_tb
-set_global_assignment -name SYSTEMVERILOG_FILE fsm_2048.sv
 set_global_assignment -name SYSTEMVERILOG_FILE counter.sv
 set_global_assignment -name SYSTEMVERILOG_FILE vga_driver.sv
 set_global_assignment -name SYSTEMVERILOG_FILE vga_driver_tb.sv
@@ -107,12 +105,18 @@ set_global_assignment -name SYSTEMVERILOG_FILE interpreter.sv
 set_global_assignment -name SYSTEMVERILOG_FILE color.sv
 set_global_assignment -name SYSTEMVERILOG_FILE comparator.sv
 set_global_assignment -name SYSTEMVERILOG_FILE FSM_Debug.sv
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name SYSTEMVERILOG_FILE first_gen.sv
 set_global_assignment -name SYSTEMVERILOG_FILE mov_right.sv
 set_global_assignment -name SYSTEMVERILOG_FILE mov_left.sv
 set_global_assignment -name SYSTEMVERILOG_FILE mov_up.sv
 set_global_assignment -name SYSTEMVERILOG_FILE mov_down.sv
+set_global_assignment -name SYSTEMVERILOG_FILE matriz_tb.sv
+set_global_assignment -name EDA_TEST_BENCH_FILE vga_driver_tb.sv -section_id vga_driver_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME matriz_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id matriz_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME matriz_tb -section_id matriz_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE matriz_tb.sv -section_id matriz_tb
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
