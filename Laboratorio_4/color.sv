@@ -1,4 +1,4 @@
-module color(input logic [3:0] value, output [23:0] pixel_color);
+module color(input logic [3:0] value, output logic [23:0] pixel_color);
 	
 	always_comb begin
 		case (value)

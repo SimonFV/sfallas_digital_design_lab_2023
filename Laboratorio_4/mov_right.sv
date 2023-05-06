@@ -25,7 +25,7 @@ module mov_right( input int count,
 					grid_right[0][j] = 4'd_0;
 				end
 				// 1 vacio
-				else if(grid[2][j] == 4'd_0) begin
+				else if(grid[1][j] == 4'd_0) begin
 					grid_right[3][j] = grid[3][j];
 					grid_right[2][j] = grid[2][j];
 					grid_right[1][j] = grid[0][j];

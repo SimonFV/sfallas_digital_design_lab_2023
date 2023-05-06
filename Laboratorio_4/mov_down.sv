@@ -25,7 +25,7 @@ module mov_down( input int count,
 					grid_down[i][0] = 4'd_0;
 				end
 				// 1 vacio
-				else if(grid[i][2] == 4'd_0) begin
+				else if(grid[i][1] == 4'd_0) begin
 					grid_down[i][3] = grid[i][3];
 					grid_down[i][2] = grid[i][2];
 					grid_down[i][1] = grid[i][0];

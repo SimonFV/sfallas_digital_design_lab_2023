@@ -1,5 +1,5 @@
-module FSM_Debug(input clk, reset, mov_right, mov_left, mov_up, mov_down,
-					  output logic [3:0] grid [0:3][0:3]);
+module FSM(input logic clk, reset, mov_right, mov_left, mov_up, mov_down,
+			  output logic [3:0] grid_out [0:3][0:3]);
 
 typedef enum logic [3:0]
 	{
@@ -10,17 +10,21 @@ typedef enum logic [3:0]
 		LEFT = 4'b0100,
 		UP = 4'b0101,
 		DOWN = 4'b0110,
-		CHECK = 4'b0111,
+		CHECK_WIN = 4'b0111,
 		WIN = 4'b1000,
 		GEN = 4'b1001,
-		LOSE = 4'b1010
+		CHECK_DEFEAT = 4'b1010,
+		DEFEAT = 4'b1011
 	} state_t;
 
 	state_t state, next_state; //Estados actual y siguiente
 	
-	
+
+// Para detectar cuando se presiona un boton
 logic mov_right_prev, mov_left_prev, mov_up_prev, mov_down_prev;
 
+// Para procesar los movimientos de la matriz
+logic [3:0] grid [0:3][0:3];
 logic [3:0] grid_next [0:3][0:3];
 logic [3:0] grid_first_gen [0:3][0:3];
 logic [3:0] grid_play [0:3][0:3];
@@ -29,10 +33,12 @@ logic [3:0] grid_left [0:3][0:3];
 logic [3:0] grid_up [0:3][0:3];
 logic [3:0] grid_down [0:3][0:3];
 
+logic ready;
+
 logic move_done = 1;
 int count = 0;
 
-first_gen _firs_gen(grid, grid_first_gen);
+first_gen _firs_gen(clk, grid, grid_first_gen, ready);
 
 mov_right _mov_right(count, grid, grid_right);
 mov_left _mov_left(count, grid, grid_left);
@@ -76,7 +82,10 @@ always_comb begin
 							  '{4'd_0, 4'd_0, 4'd_0, 4'd_0},
 							  '{4'd_0, 4'd_0, 4'd_0, 4'd_0},
 							  '{4'd_0, 4'd_0, 4'd_0, 4'd_0}};
-			next_state = FIRST_GEN;
+			move_done = 1;
+			if ((~mov_right & mov_right_prev) | (~mov_left & mov_left_prev) |
+				 (~mov_up & mov_up_prev) | (~mov_down & mov_down_prev)) next_state = FIRST_GEN;
+			else next_state = INIT;
 				
 		end
 				
@@ -84,7 +93,8 @@ always_comb begin
 			
 			move_done = 1;
 			grid_next = grid_first_gen;
-			next_state = PLAY;
+			if(ready == 1) next_state = PLAY;
+			else next_state = FIRST_GEN;
 			
 		end
 		
@@ -136,6 +146,41 @@ always_comb begin
 				
 		end
 		
+		CHECK_WIN: begin
+			
+			move_done = 1;
+			next_state = INIT;
+				
+		end
+		
+		WIN: begin
+			
+			move_done = 1;
+			next_state = INIT;
+				
+		end
+		
+		GEN: begin
+			
+			move_done = 1;
+			next_state = INIT;
+				
+		end
+		
+		CHECK_DEFEAT: begin
+			
+			move_done = 1;
+			next_state = INIT;
+				
+		end
+		
+		DEFEAT: begin
+			
+			move_done = 1;
+			next_state = INIT;
+				
+		end
+		
 			
 			
 		default: begin
@@ -145,6 +190,8 @@ always_comb begin
 	endcase
 		
 end
+
+assign grid_out = grid;
 
 
 endmodule

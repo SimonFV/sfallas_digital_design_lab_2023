@@ -25,7 +25,7 @@ module main(input clk_50Mhz, mov_left, mov_right, mov_up, mov_down,
 	logic [3:0] score = 0;
 	
 	
-	FSM_Debug _FSM_Debug(clk_25Mhz, reset, mov_right, mov_left, mov_up, mov_down, matrix);
+	FSM _FSM(clk_game, reset, mov_right, mov_left, mov_up, mov_down, matrix);
 	
 	// Se procesa la matriz del juego con la posicion del pixel actual para
 	// determinar cual debera ser su color
