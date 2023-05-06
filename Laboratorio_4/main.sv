@@ -6,6 +6,7 @@ module main(input clk_50Mhz, mov_left, mov_right, mov_up, mov_down,
 	
 	logic clk_25Mhz = 0;
 	logic _reset = 0;
+	logic [9:0] count_clk_game = 10'd_0;
 	
 	logic [23:0] pixel_color = 24'd_0;
 	
@@ -14,10 +15,7 @@ module main(input clk_50Mhz, mov_left, mov_right, mov_up, mov_down,
 	logic [31:0] next_y = 32'd_0;
 	
 	// Matriz que contiene los datos de casillas del juego
-	logic [3:0] matrix [0:3][0:3] = '{'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
-												 '{4'd_0, 4'd_0, 4'd_0, 4'd_0},
-												 '{4'd_0, 4'd_0, 4'd_0, 4'd_0},
-												 '{4'd_0, 4'd_0, 4'd_0, 4'd_0}};
+	logic [3:0] matrix [0:3][0:3];
 	
 	
 	logic win_flag = 0;      //Señal de victoria (activo en alto)
@@ -41,8 +39,16 @@ module main(input clk_50Mhz, mov_left, mov_right, mov_up, mov_down,
 							next_x, next_y
 							);
 	
+	// Reloj para la salida VGA
 	always_ff @ (posedge clk_50Mhz)
 		clk_25Mhz <= ~clk_25Mhz;
 	
-
+	// Reloj para la fsm del juego
+	always_ff @ (posedge clk_25Mhz) begin
+		count_clk_game <= count_clk_game + 10'd_1;
+		
+		if(count_clk_game == 10'd_0) clk_game <= ~clk_game;
+		else clk_game <= clk_game;
+	end
+		
 endmodule
