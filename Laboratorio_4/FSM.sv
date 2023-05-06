@@ -91,11 +91,11 @@ always_comb begin
 			move_done = 1;
 			grid_next = '{'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
 							  '{4'd_0, 4'd_0, 4'd_0, 4'd_0},
-							  '{4'd_0, 4'd_0, 4'd_0, 4'd_0},
-							  '{4'd_0, 4'd_0, 4'd_0, 4'd_0}};
+							  '{4'd_2, 4'd_2, 4'd_2, 4'd_2},
+							  '{4'd_2, 4'd_2, 4'd_2, 4'd_2}};
 			move_done = 1;
 			if ((~mov_right & mov_right_prev) | (~mov_left & mov_left_prev) |
-				 (~mov_up & mov_up_prev) | (~mov_down & mov_down_prev)) next_state = FIRST_GEN;
+				 (~mov_up & mov_up_prev) | (~mov_down & mov_down_prev)) next_state = PLAY;
 			else next_state = INIT;
 				
 		end

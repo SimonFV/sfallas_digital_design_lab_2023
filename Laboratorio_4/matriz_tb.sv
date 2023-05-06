@@ -34,17 +34,20 @@ module matriz_tb();
 		#100;
 		mov_right = 1;
 		
-		// Movimiento a la abajo
-		#400;
-		mov_down = 0;
-		#100;
-		mov_down = 1;
 		
 		// Movimiento a la derecha
 		#400;
 		mov_right = 0;
 		#100;
 		mov_right = 1;
+		
+		/*
+		// Movimiento a la abajo
+		#400;
+		mov_down = 0;
+		#100;
+		mov_down = 1;
+		
 		
 		// Movimiento a la izquierda
 		#400;
@@ -57,7 +60,7 @@ module matriz_tb();
 		mov_up = 0;
 		#100;
 		mov_up = 1;
-		
+		*/
 		
 	end
 	
