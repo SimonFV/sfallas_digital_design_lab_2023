@@ -35,9 +35,9 @@ int count = 0;
 first_gen _firs_gen(grid, grid_first_gen);
 
 mov_right _mov_right(count, grid, grid_right);
-mov_left _mov_left(grid, grid_left);
-mov_up _mov_up(grid, grid_up);
-mov_down _mov_down(grid, grid_down);
+mov_left _mov_left(count, grid, grid_left);
+mov_up _mov_up(count, grid, grid_up);
+mov_down _mov_down(count, grid, grid_down);
 
 
 
@@ -136,7 +136,6 @@ always_comb begin
 			
 			
 		default: begin
-			move_done = 1;
 			next_state = INIT;
 		end
 			

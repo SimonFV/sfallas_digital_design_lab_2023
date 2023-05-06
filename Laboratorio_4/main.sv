@@ -6,6 +6,8 @@ module main(input clk_50Mhz, mov_left, mov_right, mov_up, mov_down,
 	
 	logic clk_25Mhz = 0;
 	logic _reset = 0;
+	
+	logic clk_game = 0;
 	logic [9:0] count_clk_game = 10'd_0;
 	
 	logic [23:0] pixel_color = 24'd_0;
