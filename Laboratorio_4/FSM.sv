@@ -1,5 +1,6 @@
 module FSM(input logic clk, reset, mov_right, mov_left, mov_up, mov_down,
-			  output logic [3:0] grid_out [0:3][0:3]);
+			  output logic [3:0] grid_out [0:3][0:3],
+			  output logic defeat);
 
 typedef enum logic [3:0]
 	{
@@ -94,7 +95,7 @@ always_comb begin
 							  '{4'd_0, 4'd_0, 4'd_0, 4'd_0}};
 			move_done = 1;
 			if ((~mov_right & mov_right_prev) | (~mov_left & mov_left_prev) |
-				 (~mov_up & mov_up_prev) | (~mov_down & mov_down_prev)) next_state = FIRST_GEN;
+				 (~mov_up & mov_up_prev) | (~mov_down & mov_down_prev)) next_state = PLAY;
 			else next_state = INIT;
 				
 		end
@@ -124,7 +125,7 @@ always_comb begin
 			move_done = 0;
 			grid_next = grid_right;
 			if(count > 8) begin
-				if(grid_prev != grid_next) next_state = GEN;
+				if(grid_prev != grid_next) next_state = CHECK_WIN;
 				else next_state = PLAY;
 			end
 			else next_state = RIGHT;
@@ -136,7 +137,7 @@ always_comb begin
 			move_done = 0;
 			grid_next = grid_left;
 			if(count > 8) begin
-				if(grid_prev != grid_next) next_state = GEN;
+				if(grid_prev != grid_next) next_state = CHECK_WIN;
 				else next_state = PLAY;
 			end
 			else next_state = LEFT;
@@ -148,7 +149,7 @@ always_comb begin
 			move_done = 0;
 			grid_next = grid_up;
 			if(count > 8) begin
-				if(grid_prev != grid_next) next_state = GEN;
+				if(grid_prev != grid_next) next_state = CHECK_WIN;
 				else next_state = PLAY;
 			end
 			else next_state = UP;
@@ -160,7 +161,7 @@ always_comb begin
 			move_done = 0;
 			grid_next = grid_down;
 			if(count > 8) begin
-				if(grid_prev != grid_next) next_state = GEN;
+				if(grid_prev != grid_next) next_state = CHECK_WIN;
 				else next_state = PLAY;
 			end
 			else next_state = DOWN;
@@ -170,7 +171,7 @@ always_comb begin
 		CHECK_WIN: begin
 			
 			move_done = 1;
-			next_state = INIT;
+			next_state = GEN;
 				
 		end
 		
@@ -185,22 +186,29 @@ always_comb begin
 			
 			move_done = 1;
 			grid_next = grid_block_added;
-			if(added == 1) next_state = PLAY;
+			if(added == 1) next_state = CHECK_DEFEAT;
 			else next_state = GEN;
 				
 		end
 		
 		CHECK_DEFEAT: begin
 			
-			move_done = 1;
-			next_state = INIT;
+			move_done = 0;
+			if(count > 8) begin
+				if(grid_right == grid_left &
+					grid_left == grid_up &
+					grid_up == grid_down &
+					grid_down == grid_right) next_state = DEFEAT;
+				else next_state = PLAY;
+			end
+			else next_state = CHECK_DEFEAT;
 				
 		end
 		
 		DEFEAT: begin
 			
 			move_done = 1;
-			next_state = INIT;
+			next_state = DEFEAT;
 				
 		end
 		
@@ -215,6 +223,6 @@ always_comb begin
 end
 
 assign grid_out = grid;
-
+assign defeat = (state == DEFEAT);
 
 endmodule

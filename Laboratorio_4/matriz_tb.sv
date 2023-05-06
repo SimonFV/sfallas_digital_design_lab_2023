@@ -5,10 +5,10 @@ module matriz_tb();
 	logic clk;
 	logic reset;
 	
-	logic mov_left, mov_right, mov_up, mov_down;
+	logic mov_left, mov_right, mov_up, mov_down, defeat;
 	logic [3:0] matrix [0:3][0:3];
 	
-	FSM _FSM(clk, reset, mov_right, mov_left, mov_up, mov_down, matrix);
+	FSM _FSM(clk, reset, mov_right, mov_left, mov_up, mov_down, matrix, defeat);
 	
 	always begin
 		#10 clk = 1;
@@ -34,6 +34,11 @@ module matriz_tb();
 		#100;
 		mov_right = 1;
 		
+		// Movimiento a la abajo
+		#400;
+		mov_down = 0;
+		#100;
+		mov_down = 1;
 		
 		// Movimiento a la derecha
 		#400;
@@ -53,11 +58,6 @@ module matriz_tb();
 		#100;
 		mov_up = 1;
 		
-		// Movimiento a la abajo
-		#400;
-		mov_down = 0;
-		#100;
-		mov_down = 1;
 		
 	end
 	
