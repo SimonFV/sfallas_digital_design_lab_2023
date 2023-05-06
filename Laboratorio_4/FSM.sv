@@ -95,7 +95,7 @@ always_comb begin
 							  '{4'd_2, 4'd_2, 4'd_2, 4'd_2}};
 			move_done = 1;
 			if ((~mov_right & mov_right_prev) | (~mov_left & mov_left_prev) |
-				 (~mov_up & mov_up_prev) | (~mov_down & mov_down_prev)) next_state = PLAY;
+				 (~mov_up & mov_up_prev) | (~mov_down & mov_down_prev)) next_state = FIRST_GEN;
 			else next_state = INIT;
 				
 		end
@@ -171,22 +171,22 @@ always_comb begin
 		CHECK_WIN: begin
 			
 			move_done = 1;
-			if(grid[0][0] == 4'd_5 |
-				grid[0][1] == 4'd_5 |
-				grid[0][2] == 4'd_5 |
-				grid[0][3] == 4'd_5 |
-				grid[1][0] == 4'd_5 |
-				grid[1][1] == 4'd_5 |
-				grid[1][2] == 4'd_5 |
-				grid[1][3] == 4'd_5 |
-				grid[2][0] == 4'd_5 |
-				grid[2][1] == 4'd_5 |
-				grid[2][2] == 4'd_5 |
-				grid[2][3] == 4'd_5 |
-				grid[3][0] == 4'd_5 |
-				grid[3][1] == 4'd_5 |
-				grid[3][2] == 4'd_5 |
-				grid[3][3] == 4'd_5) next_state = WIN;
+			if(grid[0][0] == 4'd_11 |
+				grid[0][1] == 4'd_11 |
+				grid[0][2] == 4'd_11 |
+				grid[0][3] == 4'd_11 |
+				grid[1][0] == 4'd_11 |
+				grid[1][1] == 4'd_11 |
+				grid[1][2] == 4'd_11 |
+				grid[1][3] == 4'd_11 |
+				grid[2][0] == 4'd_11 |
+				grid[2][1] == 4'd_11 |
+				grid[2][2] == 4'd_11 |
+				grid[2][3] == 4'd_11 |
+				grid[3][0] == 4'd_11 |
+				grid[3][1] == 4'd_11 |
+				grid[3][2] == 4'd_11 |
+				grid[3][3] == 4'd_11) next_state = WIN;
 			else next_state = GEN;
 				
 		end

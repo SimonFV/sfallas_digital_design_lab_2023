@@ -130,4 +130,5 @@ set_global_assignment -name EDA_TEST_BENCH_FILE matriz_tb.sv -section_id matriz_
 set_global_assignment -name EDA_TEST_BENCH_FILE random_tb.sv -section_id random_tb
 set_location_assignment PIN_V16 -to defeat_flag
 set_location_assignment PIN_Y21 -to win_flag
+set_global_assignment -name SYSTEMVERILOG_FILE display7.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
