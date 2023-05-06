@@ -32,8 +32,11 @@ logic [3:0] grid_right [0:3][0:3];
 logic [3:0] grid_left [0:3][0:3];
 logic [3:0] grid_up [0:3][0:3];
 logic [3:0] grid_down [0:3][0:3];
+logic [3:0] grid_prev [0:3][0:3];
+logic [3:0] grid_block_added [0:3][0:3];
 
 logic ready;
+logic added;
 
 logic move_done = 1;
 int count = 0;
@@ -63,8 +66,14 @@ always_ff @ (posedge clk) begin
 		state <= next_state;
 		grid <= grid_next;
 		
-		if(move_done == 1) count <= 0;
-		else count <= count + 1;
+		if(move_done == 1) begin
+			grid_prev <= grid;
+			count <= 0;
+		end
+		else begin
+			grid_prev <= grid_prev;
+			count <= count + 1;
+		end
 	end
 	
 end
@@ -98,7 +107,6 @@ always_comb begin
 			
 		end
 		
-		
 		PLAY: begin
 			
 			move_done = 1;
@@ -114,7 +122,10 @@ always_comb begin
 			
 			move_done = 0;
 			grid_next = grid_right;
-			if(count > 8) next_state = PLAY;
+			if(count > 8) begin
+				if(grid_prev != grid_next) next_state = GEN;
+				else next_state = PLAY;
+			end
 			else next_state = RIGHT;
 				
 		end
@@ -123,7 +134,10 @@ always_comb begin
 			
 			move_done = 0;
 			grid_next = grid_left;
-			if(count > 8) next_state = PLAY;
+			if(count > 8) begin
+				if(grid_prev != grid_next) next_state = GEN;
+				else next_state = PLAY;
+			end
 			else next_state = LEFT;
 				
 		end
@@ -132,7 +146,10 @@ always_comb begin
 			
 			move_done = 0;
 			grid_next = grid_up;
-			if(count > 8) next_state = PLAY;
+			if(count > 8) begin
+				if(grid_prev != grid_next) next_state = GEN;
+				else next_state = PLAY;
+			end
 			else next_state = UP;
 				
 		end
@@ -141,7 +158,10 @@ always_comb begin
 			
 			move_done = 0;
 			grid_next = grid_down;
-			if(count > 8) next_state = PLAY;
+			if(count > 8) begin
+				if(grid_prev != grid_next) next_state = GEN;
+				else next_state = PLAY;
+			end
 			else next_state = DOWN;
 				
 		end
@@ -163,7 +183,9 @@ always_comb begin
 		GEN: begin
 			
 			move_done = 1;
-			next_state = INIT;
+			grid_next = grid_block_added;
+			if(added == 1) next_state = PLAY;
+			else next_state = GEN;
 				
 		end
 		
