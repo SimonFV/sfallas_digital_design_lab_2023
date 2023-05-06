@@ -113,7 +113,8 @@ always_comb begin
 			
 			move_done = 0;
 			grid_next = grid_left;
-			next_state = PLAY;
+			if(count > 8) next_state = PLAY;
+			else next_state = LEFT;
 				
 		end
 		
@@ -121,7 +122,8 @@ always_comb begin
 			
 			move_done = 0;
 			grid_next = grid_up;
-			next_state = PLAY;
+			if(count > 8) next_state = PLAY;
+			else next_state = UP;
 				
 		end
 		
@@ -129,7 +131,8 @@ always_comb begin
 			
 			move_done = 0;
 			grid_next = grid_down;
-			next_state = PLAY;
+			if(count > 8) next_state = PLAY;
+			else next_state = DOWN;
 				
 		end
 		
