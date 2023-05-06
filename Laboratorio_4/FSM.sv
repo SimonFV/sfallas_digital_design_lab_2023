@@ -48,6 +48,7 @@ mov_left _mov_left(count, grid, grid_left);
 mov_up _mov_up(count, grid, grid_up);
 mov_down _mov_down(count, grid, grid_down);
 
+block_generator _b_generator(clk, grid, grid_block_added, added);
 
 
 	

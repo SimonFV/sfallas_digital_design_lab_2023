@@ -23,6 +23,11 @@ module matriz_tb();
 		mov_up = 1;
 		mov_down = 1;
 		
+		matrix = '{'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
+						'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
+						'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
+						'{4'd_0, 4'd_0, 4'd_0, 4'd_0}};
+		
 		// Se empieza el juego
 		#400;
 		mov_right = 0;
@@ -35,6 +40,24 @@ module matriz_tb();
 		mov_right = 0;
 		#100;
 		mov_right = 1;
+		
+		// Movimiento a la izquierda
+		#400;
+		mov_left = 0;
+		#100;
+		mov_left = 1;
+		
+		// Movimiento a la arriba
+		#400;
+		mov_up = 0;
+		#100;
+		mov_up = 1;
+		
+		// Movimiento a la abajo
+		#400;
+		mov_down = 0;
+		#100;
+		mov_down = 1;
 		
 	end
 	
