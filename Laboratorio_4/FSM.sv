@@ -14,8 +14,9 @@ typedef enum logic [3:0]
 		CHECK_WIN = 4'b0111,
 		WIN = 4'b1000,
 		GEN = 4'b1001,
-		CHECK_DEFEAT = 4'b1010,
-		DEFEAT = 4'b1011
+		CHECK_CAN_MOVE = 4'b1010,
+		CHECK_CAN_ADD = 4'b1011,
+		DEFEAT = 4'b1100
 	} state_t;
 
 	state_t state, next_state; //Estados actual y siguiente
@@ -42,6 +43,7 @@ logic added;
 logic move_done = 1;
 int count = 0;
 
+//instancias
 first_gen _firs_gen(clk, grid, grid_first_gen, ready);
 
 mov_right _mov_right(count, grid, grid_right);
@@ -50,7 +52,6 @@ mov_up _mov_up(count, grid, grid_up);
 mov_down _mov_down(count, grid, grid_down);
 
 block_generator _b_generator(clk, grid, grid_block_added, added);
-
 
 	
 //logica estado actual
@@ -69,13 +70,14 @@ always_ff @ (posedge clk) begin
 		grid <= grid_next;
 		
 		if(move_done == 1) begin
-			grid_prev <= grid;
 			count <= 0;
+			grid_prev <= grid;
 		end
 		else begin
 			grid_prev <= grid_prev;
 			count <= count + 1;
 		end
+		
 	end
 	
 end
@@ -94,7 +96,7 @@ always_comb begin
 							  '{4'd_0, 4'd_0, 4'd_0, 4'd_0}};
 			move_done = 1;
 			if ((~mov_right & mov_right_prev) | (~mov_left & mov_left_prev) |
-				 (~mov_up & mov_up_prev) | (~mov_down & mov_down_prev)) next_state = PLAY;
+				 (~mov_up & mov_up_prev) | (~mov_down & mov_down_prev)) next_state = FIRST_GEN;
 			else next_state = INIT;
 				
 		end
@@ -201,23 +203,34 @@ always_comb begin
 			
 			move_done = 1;
 			grid_next = grid_block_added;
-			if(added == 1) next_state = CHECK_DEFEAT;
+			if(added == 1) next_state = CHECK_CAN_MOVE;
 			else next_state = GEN;
 				
 		end
 		
-		CHECK_DEFEAT: begin
+		CHECK_CAN_MOVE: begin
+			
+			move_done = 0;
+			if(grid_prev == grid_left &
+				grid_prev == grid_up &
+				grid_prev == grid_down &
+				grid_prev == grid_right) next_state = CHECK_CAN_ADD;
+			else next_state = PLAY;
+			
+		end
+		
+		CHECK_CAN_ADD: begin
 			
 			move_done = 0;
 			if(count == 4) begin
-				if(grid_right == grid_left &
-					grid_left == grid_up &
-					grid_up == grid_down &
-					grid_down == grid_right) next_state = DEFEAT;
+				if(grid_prev == grid_left &
+					grid_prev == grid_up &
+					grid_prev == grid_down &
+					grid_prev == grid_right) next_state = DEFEAT;
 				else next_state = PLAY;
 			end
-			else next_state = CHECK_DEFEAT;
-				
+			else next_state = CHECK_CAN_ADD;
+			
 		end
 		
 		DEFEAT: begin
@@ -227,8 +240,6 @@ always_comb begin
 				
 		end
 		
-			
-			
 		default: begin
 			next_state = INIT;
 		end
