@@ -1,5 +1,6 @@
 module main(input clk_50Mhz, mov_left, mov_right, mov_up, mov_down,
 				input reset,
+				input [3:0] goal,
 				output VGA_HS, VGA_VS, 
 				output [7:0] VGA_R, VGA_G, VGA_B, 
 				output VGA_SYNC_N, VGA_CLK, VGA_BLANK_N,
@@ -30,7 +31,7 @@ module main(input clk_50Mhz, mov_left, mov_right, mov_up, mov_down,
 	display7 d4((points/10000) % 10, s4);
 	
 	
-	FSM _FSM(clk_game, reset, mov_right, mov_left, mov_up, mov_down, matrix, defeat_flag, win_flag, points);
+	FSM _FSM(clk_game, reset, mov_right, mov_left, mov_up, mov_down, goal, matrix, defeat_flag, win_flag, points);
 	
 	// Se procesa la matriz del juego con la posicion del pixel actual para
 	// determinar cual debera ser su color

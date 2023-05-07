@@ -1,4 +1,5 @@
 module FSM(input logic clk, reset, mov_right, mov_left, mov_up, mov_down,
+			  input [3:0] goal_in,
 			  output logic [3:0] grid_out [0:3][0:3],
 			  output logic defeat, win, 
 			  output int points_out);
@@ -44,8 +45,8 @@ logic added;
 logic move_done = 1;
 int count = 0;
 
-
-int points = 4;
+logic [3:0] goal, goal_next;
+int points = 0;
 int point, point_right, point_left, point_up, point_down;
 
 
@@ -65,7 +66,7 @@ always_ff @ (posedge clk) begin
 
 	if (reset) begin
 		state <= INIT;
-		points <= 4;
+		points <= 0;
 	end
 	else begin
 		mov_right_prev <= mov_right;
@@ -76,6 +77,7 @@ always_ff @ (posedge clk) begin
 		state <= next_state;
 		grid <= grid_next;
 		points <= points + point;
+		goal <= goal_next;
 		
 		if(move_done == 1) begin
 			count <= 0;
@@ -98,12 +100,13 @@ always_comb begin
 	
 		INIT: begin
 			
-			grid_next = '{'{4'd_1, 4'd_0, 4'd_0, 4'd_1},
-							  '{4'd_0, 4'd_1, 4'd_0, 4'd_0},
-							  '{4'd_1, 4'd_0, 4'd_1, 4'd_0},
-							  '{4'd_0, 4'd_1, 4'd_0, 4'd_0}};
+			grid_next = '{'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
+							'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
+							'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
+							'{4'd_0, 4'd_0, 4'd_0, 4'd_0}};
 			point = 0;
 			move_done = 1;
+			goal_next = (goal_in < 4'd_2 | goal_in > 4'd_11 ) ? 4'd_2 : goal_in;
 			if ((~mov_right & mov_right_prev) | (~mov_left & mov_left_prev) |
 				 (~mov_up & mov_up_prev) | (~mov_down & mov_down_prev)) next_state = FIRST_GEN;
 			else next_state = INIT;
@@ -114,6 +117,7 @@ always_comb begin
 			
 			point = 0;
 			move_done = 1;
+			goal_next = goal;
 			grid_next = grid_first_gen;
 			if(ready == 1) next_state = PLAY;
 			else next_state = FIRST_GEN;
@@ -124,6 +128,7 @@ always_comb begin
 			
 			point = 0;
 			move_done = 1;
+			goal_next = goal;
 			if (~mov_right & mov_right_prev) next_state = RIGHT;
 			else if (~mov_left & mov_left_prev) next_state = LEFT;
 			else if (~mov_up & mov_up_prev) next_state = UP;
@@ -136,6 +141,7 @@ always_comb begin
 			
 			point = point_right;
 			move_done = 0;
+			goal_next = goal;
 			grid_next = grid_right;
 			if(count > 8) begin
 				if(grid_prev != grid_next) next_state = CHECK_WIN;
@@ -149,6 +155,7 @@ always_comb begin
 			
 			point = point_left;
 			move_done = 0;
+			goal_next = goal;
 			grid_next = grid_left;
 			if(count > 8) begin
 				if(grid_prev != grid_next) next_state = CHECK_WIN;
@@ -162,6 +169,7 @@ always_comb begin
 			
 			point = point_up;
 			move_done = 0;
+			goal_next = goal;
 			grid_next = grid_up;
 			if(count > 8) begin
 				if(grid_prev != grid_next) next_state = CHECK_WIN;
@@ -175,6 +183,7 @@ always_comb begin
 			
 			point = point_down;
 			move_done = 0;
+			goal_next = goal;
 			grid_next = grid_down;
 			if(count > 8) begin
 				if(grid_prev != grid_next) next_state = CHECK_WIN;
@@ -187,23 +196,24 @@ always_comb begin
 		CHECK_WIN: begin
 			
 			point = 0;
+			goal_next = goal;
 			move_done = 1;
-			if(grid[0][0] == 4'd_11 |
-				grid[0][1] == 4'd_11 |
-				grid[0][2] == 4'd_11 |
-				grid[0][3] == 4'd_11 |
-				grid[1][0] == 4'd_11 |
-				grid[1][1] == 4'd_11 |
-				grid[1][2] == 4'd_11 |
-				grid[1][3] == 4'd_11 |
-				grid[2][0] == 4'd_11 |
-				grid[2][1] == 4'd_11 |
-				grid[2][2] == 4'd_11 |
-				grid[2][3] == 4'd_11 |
-				grid[3][0] == 4'd_11 |
-				grid[3][1] == 4'd_11 |
-				grid[3][2] == 4'd_11 |
-				grid[3][3] == 4'd_11) next_state = WIN;
+			if(grid[0][0] == goal |
+				grid[0][1] == goal |
+				grid[0][2] == goal |
+				grid[0][3] == goal |
+				grid[1][0] == goal |
+				grid[1][1] == goal |
+				grid[1][2] == goal |
+				grid[1][3] == goal |
+				grid[2][0] == goal |
+				grid[2][1] == goal |
+				grid[2][2] == goal |
+				grid[2][3] == goal |
+				grid[3][0] == goal |
+				grid[3][1] == goal |
+				grid[3][2] == goal |
+				grid[3][3] == goal ) next_state = WIN;
 			else next_state = GEN;
 				
 		end
@@ -211,6 +221,7 @@ always_comb begin
 		WIN: begin
 			
 			point = 0;
+			goal_next = goal;
 			move_done = 1;
 			next_state = WIN;
 				
@@ -219,6 +230,7 @@ always_comb begin
 		GEN: begin
 			
 			point = 0;
+			goal_next = goal;
 			move_done = 1;
 			grid_next = grid_block_added;
 			if(added == 1) next_state = CHECK_CAN_MOVE;
@@ -229,6 +241,7 @@ always_comb begin
 		CHECK_CAN_MOVE: begin
 			
 			point = 0;
+			goal_next = goal;
 			move_done = 0;
 			if(grid_prev == grid_left &
 				grid_prev == grid_up &
@@ -241,6 +254,7 @@ always_comb begin
 		CHECK_CAN_ADD: begin
 			
 			point = 0;
+			goal_next = goal;
 			move_done = 0;
 			if(count == 4) begin
 				if(grid_prev == grid_left &
@@ -256,12 +270,14 @@ always_comb begin
 		DEFEAT: begin
 			
 			point = 0;
+			goal_next = goal;
 			move_done = 1;
 			next_state = DEFEAT;
 				
 		end
 		
 		default: begin
+			goal_next = goal;
 			point = 0;
 			move_done = 1;
 			next_state = INIT;

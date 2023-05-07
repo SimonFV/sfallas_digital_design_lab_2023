@@ -132,7 +132,6 @@ set_location_assignment PIN_V16 -to defeat_flag
 set_location_assignment PIN_Y21 -to win_flag
 set_global_assignment -name SYSTEMVERILOG_FILE display7.sv
 set_global_assignment -name SYSTEMVERILOG_FILE letters_rom.sv
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_location_assignment PIN_AE26 -to s0[0]
 set_location_assignment PIN_AE27 -to s0[1]
 set_location_assignment PIN_AE28 -to s0[2]
@@ -168,3 +167,8 @@ set_location_assignment PIN_W22 -to s4[3]
 set_location_assignment PIN_W24 -to s4[4]
 set_location_assignment PIN_V23 -to s4[5]
 set_location_assignment PIN_W25 -to s4[6]
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_location_assignment PIN_AE12 -to goal[3]
+set_location_assignment PIN_AD10 -to goal[2]
+set_location_assignment PIN_AC9 -to goal[1]
+set_location_assignment PIN_AE11 -to goal[0]
