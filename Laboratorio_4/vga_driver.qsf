@@ -167,8 +167,8 @@ set_location_assignment PIN_W22 -to s4[3]
 set_location_assignment PIN_W24 -to s4[4]
 set_location_assignment PIN_V23 -to s4[5]
 set_location_assignment PIN_W25 -to s4[6]
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_location_assignment PIN_AE12 -to goal[3]
 set_location_assignment PIN_AD10 -to goal[2]
 set_location_assignment PIN_AC9 -to goal[1]
 set_location_assignment PIN_AE11 -to goal[0]
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

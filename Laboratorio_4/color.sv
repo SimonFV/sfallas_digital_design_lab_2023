@@ -23,7 +23,7 @@ module color(input logic [3:0] value,
 	assign bit_addr = x[2:0];               // column number of ascii character rom
 	
 	// "on" region in center of screen
-	assign ascii_bit_on = ((x >= 32 & x < 64) & (y >= 32 & y < 48)) ? ascii_bit : 1'b0;
+	assign ascii_bit_on = ((x >= 24 & x < 56) & (y >= 32 & y < 48)) ? ascii_bit : 1'b0;
  
 	
 	always_comb begin
@@ -31,87 +31,132 @@ module color(input logic [3:0] value,
 			// 0
 			4'd_0: begin 
 				ascii_char = 7'h00;
-				pixel_color = 24'b110000001100000011000000;
+				pixel_color = 24'h_cdc0b4;
 			end
 			
 			// 2
 			4'd_1: begin
-				if(x >= 48 & x < 56) ascii_char = 7'h32;
+				if(x >= 40 & x < 48) ascii_char = 7'h32;
 				else ascii_char = 7'h00;
 				
-				if(ascii_bit_on) pixel_color = 24'h000000;
-				else pixel_color = 24'b111111111001100111001100;
+				if(ascii_bit_on) pixel_color = 24'h_776e65;
+				else pixel_color = 24'h_eee4da;
 			end
 			
 			// 4
 			4'd_2: begin
-				ascii_char = 7'h00;
-				pixel_color = 24'b110011001001100111111111;
+				if(x >= 40 & x < 48) ascii_char = 7'h34;
+				else ascii_char = 7'h00;
+				
+				if(ascii_bit_on) pixel_color = 24'h_776e65;
+				else pixel_color = 24'h_eee1c9;
 			end
 			
 			// 8
 			4'd_3: begin
-				ascii_char = 7'h00;
-				pixel_color = 24'b100110011001100111111111;
+				if(x >= 40 & x < 48) ascii_char = 7'h38;
+				else ascii_char = 7'h00;
+				
+				if(ascii_bit_on) pixel_color = 24'h_f9f6f2;
+				else pixel_color = 24'h_f3b27a;
 			end
 			
 			// 16
 			4'd_4: begin
-				ascii_char = 7'h00;
-				pixel_color = 24'b100110011100110011111111;
+				if(x >= 40 & x < 48) ascii_char = 7'h36;
+				else if(x >= 32 & x < 40) ascii_char = 7'h31;
+				else ascii_char = 7'h00;
+				
+				if(ascii_bit_on) pixel_color = 24'h_f9f6f2;
+				else pixel_color = 24'h_f69664;
 			end
 			
 			// 32
 			4'd_5: begin
-				ascii_char = 7'h00;
-				pixel_color = 24'b100110011111111111111111;
+				if(x >= 40 & x < 48) ascii_char = 7'h32;
+				else if(x >= 32 & x < 40) ascii_char = 7'h33;
+				else ascii_char = 7'h00;
+				
+				if(ascii_bit_on) pixel_color = 24'h_f9f6f2;
+				else pixel_color = 24'h_f77c5f;
 			end
 			
 			// 64
 			4'd_6: begin
-				ascii_char = 7'h00;
-				pixel_color = 24'b100110011111111111001100;
+				if(x >= 40 & x < 48) ascii_char = 7'h34;
+				else if(x >= 32 & x < 40) ascii_char = 7'h36;
+				else ascii_char = 7'h00;
+				
+				if(ascii_bit_on) pixel_color = 24'h_f9f6f2;
+				else pixel_color = 24'h_f7653e;
 			end
 			
 			// 128
 			4'd_7: begin
-				ascii_char = 7'h00;
-				pixel_color = 24'b100110011111111110011001;
+				if(x >= 48 & x < 56) ascii_char = 7'h38;
+				else if(x >= 40 & x < 48) ascii_char = 7'h32;
+				else if(x >= 32 & x < 40) ascii_char = 7'h31;
+				else ascii_char = 7'h00;
+				
+				if(ascii_bit_on) pixel_color = 24'h_f9f6f2;
+				else pixel_color = 24'h_f9d768;
 			end
 			
 			// 256
 			4'd_8: begin
-				ascii_char = 7'h00;
-				pixel_color = 24'b110011001111111110011001;
+				if(x >= 48 & x < 56) ascii_char = 7'h36;
+				else if(x >= 40 & x < 48) ascii_char = 7'h35;
+				else if(x >= 32 & x < 40) ascii_char = 7'h32;
+				else ascii_char = 7'h00;
+				
+				if(ascii_bit_on) pixel_color = 24'h_f9f6f2;
+				else pixel_color = 24'h_fcd453;
 			end
 			
 			// 512
 			4'd_9: begin
-				ascii_char = 7'h00;
-				pixel_color = 24'b111111111111111110011001;
+				if(x >= 48 & x < 56) ascii_char = 7'h32;
+				else if(x >= 40 & x < 48) ascii_char = 7'h31;
+				else if(x >= 32 & x < 40) ascii_char = 7'h35;
+				else ascii_char = 7'h00;
+				
+				if(ascii_bit_on) pixel_color = 24'h_f9f6f2;
+				else pixel_color = 24'h_ffd13b;
 			end
 			
 			// 1024
 			4'd_10: begin
-				ascii_char = 7'h00;
-				pixel_color = 24'b111111111100110011111111;
+				if(x >= 48 & x < 56) ascii_char = 7'h34;
+				else if(x >= 40 & x < 48) ascii_char = 7'h32;
+				else if(x >= 32 & x < 40) ascii_char = 7'h30;
+				else if(x >= 24 & x < 32) ascii_char = 7'h31;
+				else ascii_char = 7'h00;
+				
+				if(ascii_bit_on) pixel_color = 24'h_f9f6f2;
+				else pixel_color = 24'h_ffe325;
 			end
 			
 			// 2048
 			4'd_11: begin
-				ascii_char = 7'h00;
-				pixel_color = 24'b111111111001100110011001;
+				if(x >= 48 & x < 56) ascii_char = 7'h38;
+				else if(x >= 40 & x < 48) ascii_char = 7'h34;
+				else if(x >= 32 & x < 40) ascii_char = 7'h30;
+				else if(x >= 24 & x < 32) ascii_char = 7'h32;
+				else ascii_char = 7'h00;
+				
+				if(ascii_bit_on) pixel_color = 24'h_f9f6f2;
+				else pixel_color = 24'h_fff700;
 			end
 			
 			// background
 			4'd_12: begin
 				ascii_char = 7'h00;
-				pixel_color = 24'b111000001110000011100000;
+				pixel_color = 24'h_bbada0;
 			end
 			
 			default: begin
 				ascii_char = 7'h00;
-				pixel_color = 24'b111000001110000011100000;
+				pixel_color = 24'h_bbada0;
 			end
 			
 		endcase
