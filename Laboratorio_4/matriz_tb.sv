@@ -29,38 +29,38 @@ module matriz_tb();
 						'{4'd_0, 4'd_0, 4'd_0, 4'd_0}};
 		
 		// Se empieza el juego
-		#400;
+		#500;
 		mov_right = 0;
 		#100;
 		mov_right = 1;
 		
 		
 		// Movimiento a la derecha
-		#400;
+		#500;
 		mov_right = 0;
 		#100;
 		mov_right = 1;
 		
-		/*
+		
 		// Movimiento a la abajo
-		#400;
+		#500;
 		mov_down = 0;
 		#100;
 		mov_down = 1;
 		
 		
 		// Movimiento a la izquierda
-		#400;
+		#500;
 		mov_left = 0;
 		#100;
 		mov_left = 1;
 		
 		// Movimiento a la arriba
-		#400;
+		#500;
 		mov_up = 0;
 		#100;
 		mov_up = 1;
-		*/
+		
 		
 	end
 	
