@@ -25,7 +25,7 @@ module main(input clk_50Mhz, mov_left, mov_right, mov_up, mov_down,
 	
 	// Se procesa la matriz del juego con la posicion del pixel actual para
 	// determinar cual debera ser su color
-	interpreter inter (matrix, next_x, next_y, pixel_color);
+	interpreter inter (clk_25Mhz, matrix, next_x, next_y, pixel_color);
 	
 	
 	// El interprete retorna el valor de color que debe dibujar el driver VGA
