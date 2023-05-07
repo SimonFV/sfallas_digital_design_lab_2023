@@ -1,14 +1,17 @@
 module mov_down( input int count,
 						input logic [3:0] grid [0:3][0:3], 
-						output logic [3:0] grid_down [0:3][0:3]);
-
+						output logic [3:0] grid_down [0:3][0:3],
+						output int total);
+	
+	int point [3:0];
+	assign total = point[0] + point[1] + point[2] + point[3];
 
 	always_comb begin
-		
+	
 		if(count != 4) begin
 			
-			
 			for(int i = 0; i < 4; i++) begin
+				point[i] = 0;
 				
 				// 3 vacio
 				if(grid[i][3] == 4'd_0) begin
@@ -55,6 +58,7 @@ module mov_down( input int count,
 						grid_down[i][1] = grid[i][1] + 4'd_1;
 						grid_down[i][2] = 4'd_0;
 						grid_down[i][3] = grid[i][3] + 4'd_1;
+						point[i] = 2**(grid[i][1] + 4'd_1) + 2**(grid[i][3] + 4'd_1);
 					end
 					// 0 y 1 diferentes
 					else begin
@@ -62,6 +66,7 @@ module mov_down( input int count,
 						grid_down[i][1] = grid[i][1];
 						grid_down[i][2] = 4'd_0;
 						grid_down[i][3] = grid[i][3] + 4'd_1;
+						point[i] = 2**(grid[i][3] + 4'd_1);
 					end
 				end
 				// 2 y 3 diferentes
@@ -73,6 +78,7 @@ module mov_down( input int count,
 						grid_down[i][1] = 4'd_0;
 						grid_down[i][2] = grid[i][2] + 4'd_1;
 						grid_down[i][3] = grid[i][3];
+						point[i] = 2**(grid[i][2] + 4'd_1);
 					end
 					// 1 y 2 diferentes
 					else begin
@@ -82,6 +88,7 @@ module mov_down( input int count,
 							grid_down[i][1] = grid[i][1] + 4'd_1;
 							grid_down[i][2] = grid[i][2];
 							grid_down[i][3] = grid[i][3];
+							point[i] = 2**(grid[i][1] + 4'd_1);
 						end
 						// 0 y 1 diferentes
 						else begin
@@ -89,6 +96,7 @@ module mov_down( input int count,
 							grid_down[i][1] = grid[i][1];
 							grid_down[i][2] = grid[i][2];
 							grid_down[i][3] = grid[i][3];
+							point[i] = 0;
 						end
 					end
 					

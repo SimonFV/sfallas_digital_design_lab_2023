@@ -1,4 +1,4 @@
-module sevenseg(input logic [3:0] data,
+module display7(input logic [3:0] data,
 					output logic [6:0] segments);
 
 	always_comb begin

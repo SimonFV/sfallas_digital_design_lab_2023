@@ -23,7 +23,7 @@ module color(input logic [3:0] value,
 	assign bit_addr = x[2:0];               // column number of ascii character rom
 	
 	// "on" region in center of screen
-	assign ascii_bit_on = ((x >= 32 & x < 64) & (y >= 40 & y < 56)) ? ascii_bit : 1'b0;
+	assign ascii_bit_on = ((x >= 32 & x < 64) & (y >= 32 & y < 48)) ? ascii_bit : 1'b0;
  
 	
 	always_comb begin

@@ -5,10 +5,11 @@ module matriz_tb();
 	logic clk;
 	logic reset;
 	
-	logic mov_left, mov_right, mov_up, mov_down, defeat;
+	logic mov_left, mov_right, mov_up, mov_down, defeat, win;
 	logic [3:0] matrix [0:3][0:3];
+	int points;
 	
-	FSM _FSM(clk, reset, mov_right, mov_left, mov_up, mov_down, matrix, defeat);
+	FSM _FSM(clk, reset, mov_right, mov_left, mov_up, mov_down, matrix, defeat, win, points);
 	
 	always begin
 		#10 clk = 1;

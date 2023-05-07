@@ -1,6 +1,7 @@
 module FSM(input logic clk, reset, mov_right, mov_left, mov_up, mov_down,
 			  output logic [3:0] grid_out [0:3][0:3],
-			  output logic defeat, win);
+			  output logic defeat, win, 
+			  output int points_out);
 
 typedef enum logic [3:0]
 	{
@@ -43,13 +44,18 @@ logic added;
 logic move_done = 1;
 int count = 0;
 
+
+int points = 4;
+int point, point_right, point_left, point_up, point_down;
+
+
 //instancias
 first_gen _firs_gen(clk, grid, grid_first_gen, ready);
 
-mov_right _mov_right(count, grid, grid_right);
-mov_left _mov_left(count, grid, grid_left);
-mov_up _mov_up(count, grid, grid_up);
-mov_down _mov_down(count, grid, grid_down);
+mov_right _mov_right(count, grid, grid_right, point_right);
+mov_left _mov_left(count, grid, grid_left, point_left);
+mov_up _mov_up(count, grid, grid_up, point_up);
+mov_down _mov_down(count, grid, grid_down, point_down);
 
 block_generator _b_generator(clk, grid, grid_block_added, added);
 
@@ -59,6 +65,7 @@ always_ff @ (posedge clk) begin
 
 	if (reset) begin
 		state <= INIT;
+		points <= 4;
 	end
 	else begin
 		mov_right_prev <= mov_right;
@@ -68,6 +75,7 @@ always_ff @ (posedge clk) begin
 		
 		state <= next_state;
 		grid <= grid_next;
+		points <= points + point;
 		
 		if(move_done == 1) begin
 			count <= 0;
@@ -90,10 +98,11 @@ always_comb begin
 	
 		INIT: begin
 			
-			grid_next = '{'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
-							  '{4'd_0, 4'd_0, 4'd_0, 4'd_0},
-							  '{4'd_0, 4'd_0, 4'd_0, 4'd_0},
-							  '{4'd_0, 4'd_0, 4'd_0, 4'd_0}};
+			grid_next = '{'{4'd_1, 4'd_0, 4'd_0, 4'd_1},
+							  '{4'd_0, 4'd_1, 4'd_0, 4'd_0},
+							  '{4'd_1, 4'd_0, 4'd_1, 4'd_0},
+							  '{4'd_0, 4'd_1, 4'd_0, 4'd_0}};
+			point = 0;
 			move_done = 1;
 			if ((~mov_right & mov_right_prev) | (~mov_left & mov_left_prev) |
 				 (~mov_up & mov_up_prev) | (~mov_down & mov_down_prev)) next_state = FIRST_GEN;
@@ -103,6 +112,7 @@ always_comb begin
 				
 		FIRST_GEN: begin
 			
+			point = 0;
 			move_done = 1;
 			grid_next = grid_first_gen;
 			if(ready == 1) next_state = PLAY;
@@ -112,6 +122,7 @@ always_comb begin
 		
 		PLAY: begin
 			
+			point = 0;
 			move_done = 1;
 			if (~mov_right & mov_right_prev) next_state = RIGHT;
 			else if (~mov_left & mov_left_prev) next_state = LEFT;
@@ -123,6 +134,7 @@ always_comb begin
 		
 		RIGHT: begin
 			
+			point = point_right;
 			move_done = 0;
 			grid_next = grid_right;
 			if(count > 8) begin
@@ -135,6 +147,7 @@ always_comb begin
 		
 		LEFT: begin
 			
+			point = point_left;
 			move_done = 0;
 			grid_next = grid_left;
 			if(count > 8) begin
@@ -147,6 +160,7 @@ always_comb begin
 		
 		UP: begin
 			
+			point = point_up;
 			move_done = 0;
 			grid_next = grid_up;
 			if(count > 8) begin
@@ -159,6 +173,7 @@ always_comb begin
 		
 		DOWN: begin
 			
+			point = point_down;
 			move_done = 0;
 			grid_next = grid_down;
 			if(count > 8) begin
@@ -171,6 +186,7 @@ always_comb begin
 		
 		CHECK_WIN: begin
 			
+			point = 0;
 			move_done = 1;
 			if(grid[0][0] == 4'd_11 |
 				grid[0][1] == 4'd_11 |
@@ -194,6 +210,7 @@ always_comb begin
 		
 		WIN: begin
 			
+			point = 0;
 			move_done = 1;
 			next_state = WIN;
 				
@@ -201,6 +218,7 @@ always_comb begin
 		
 		GEN: begin
 			
+			point = 0;
 			move_done = 1;
 			grid_next = grid_block_added;
 			if(added == 1) next_state = CHECK_CAN_MOVE;
@@ -210,6 +228,7 @@ always_comb begin
 		
 		CHECK_CAN_MOVE: begin
 			
+			point = 0;
 			move_done = 0;
 			if(grid_prev == grid_left &
 				grid_prev == grid_up &
@@ -221,6 +240,7 @@ always_comb begin
 		
 		CHECK_CAN_ADD: begin
 			
+			point = 0;
 			move_done = 0;
 			if(count == 4) begin
 				if(grid_prev == grid_left &
@@ -235,12 +255,15 @@ always_comb begin
 		
 		DEFEAT: begin
 			
+			point = 0;
 			move_done = 1;
 			next_state = DEFEAT;
 				
 		end
 		
 		default: begin
+			point = 0;
+			move_done = 1;
 			next_state = INIT;
 		end
 			
@@ -251,5 +274,6 @@ end
 assign grid_out = grid;
 assign defeat = (state == DEFEAT);
 assign win = (state == WIN);
+assign points_out = points;
 
 endmodule
