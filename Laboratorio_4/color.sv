@@ -1,5 +1,6 @@
 module color(input logic [3:0] value,
 				 input logic [31:0] x, y,
+				 input logic win, defeat,
 				 output logic [23:0] pixel_color);
 				 
 				
@@ -23,7 +24,7 @@ module color(input logic [3:0] value,
 	assign bit_addr = x[2:0];               // column number of ascii character rom
 	
 	// "on" region in center of screen
-	assign ascii_bit_on = ((x >= 24 & x < 56) & (y >= 32 & y < 48)) ? ascii_bit : 1'b0;
+	assign ascii_bit_on = ((x >= 0 & x < 80) & (y >= 32 & y < 48)) ? ascii_bit : 1'b0;
  
 	
 	always_comb begin
@@ -148,8 +149,47 @@ module color(input logic [3:0] value,
 				else pixel_color = 24'h_fff700;
 			end
 			
+			// mensaje
+			4'd_11: begin
+				if(win == 1) begin
+					if(x >= 0 & x < 8) ascii_char = 7'h56;				//V
+					else if(x >= 8 & x < 16) ascii_char = 7'h49;		//I
+					else if(x >= 16 & x < 24) ascii_char = 7'h43;	//C
+					else if(x >= 24 & x < 32) ascii_char = 7'h54;	//T
+					else if(x >= 32 & x < 40) ascii_char = 7'h4f;	//O
+					else if(x >= 40 & x < 48) ascii_char = 7'h59;	//R
+					else if(x >= 48 & x < 56) ascii_char = 7'h54;	//Y
+					else if(x >= 56 & x < 64) ascii_char = 7'h21;	//!
+					else ascii_char = 7'h00;
+					
+					if(ascii_bit_on) pixel_color = 24'h_00ff80;
+					else pixel_color = 24'h_bbada0;
+				end
+				else if(defeat == 1) begin
+					if(x >= 0 & x < 8) ascii_char = 7'h47;				//G
+					else if(x >= 8 & x < 16) ascii_char = 7'h41;		//A
+					else if(x >= 16 & x < 24) ascii_char = 7'h4d;	//M
+					else if(x >= 24 & x < 32) ascii_char = 7'h45;	//E
+					else if(x >= 32 & x < 40) ascii_char = 7'h00;	//
+					else if(x >= 40 & x < 48) ascii_char = 7'h4f;	//O
+					else if(x >= 48 & x < 56) ascii_char = 7'h56;	//V
+					else if(x >= 56 & x < 64) ascii_char = 7'h45;	//E
+					else if(x >= 64 & x < 72) ascii_char = 7'h59;	//R
+					else if(x >= 72 & x < 80) ascii_char = 7'h21;	//!
+					else ascii_char = 7'h00;
+					
+					if(ascii_bit_on) pixel_color = 24'h_ff9933;
+					else pixel_color = 24'h_bbada0;
+				end
+				else begin
+					ascii_char = 7'h00;
+					pixel_color = 24'h_bbada0;
+				end
+				
+			end
+			
 			// background
-			4'd_12: begin
+			4'd_13: begin
 				ascii_char = 7'h00;
 				pixel_color = 24'h_bbada0;
 			end

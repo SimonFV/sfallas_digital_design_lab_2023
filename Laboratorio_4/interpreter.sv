@@ -1,12 +1,13 @@
 module interpreter(input logic clk,
 						 input logic [3:0] matrix [0:3][0:3],
 						 input logic [31:0] next_x, next_y,
+						 input logic win, defeat,
 						 output logic [23:0] pixel_color);
 	
 	logic [3:0] value = 4'd_0;
 	logic [31:0] x, y, x_offset, y_offset;
 	
-	color col (value, x, y, pixel_color);
+	color col (value, x, y, win, defeat, pixel_color);
 	
 	assign x = next_x - x_offset;
 	assign y = next_y - y_offset;
@@ -100,8 +101,16 @@ module interpreter(input logic clk,
 			x_offset = 280;
 			y_offset = 280;
 		end
-		else begin
+		
+		// MENSAJE
+		else if (next_x >= 150 & next_x < 230 & next_y >= 380 & next_y < 460) begin
 			value = 4'd_12;
+			x_offset = 150;
+			y_offset = 380;
+		end
+		
+		else begin
+			value = 4'd_13;
 			x_offset = 0;
 			y_offset = 0;
 		end

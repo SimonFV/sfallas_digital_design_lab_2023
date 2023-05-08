@@ -8,8 +8,9 @@ module matriz_tb();
 	logic mov_left, mov_right, mov_up, mov_down, defeat, win;
 	logic [3:0] matrix [0:3][0:3];
 	int points;
+	logic [3:0] goal;
 	
-	FSM _FSM(clk, reset, mov_right, mov_left, mov_up, mov_down, matrix, defeat, win, points);
+	FSM _FSM(clk, reset, mov_right, mov_left, mov_up, mov_down, goal, matrix, defeat, win, points);
 	
 	always begin
 		#10 clk = 1;
@@ -23,11 +24,7 @@ module matriz_tb();
 		mov_left = 1;
 		mov_up = 1;
 		mov_down = 1;
-		
-		matrix = '{'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
-						'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
-						'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
-						'{4'd_0, 4'd_0, 4'd_0, 4'd_0}};
+		goal = 4'd_11;
 		
 		// Se empieza el juego
 		#500;

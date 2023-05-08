@@ -100,15 +100,15 @@ always_comb begin
 	
 		INIT: begin
 			
-			grid_next = '{'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
-							'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
-							'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
-							'{4'd_0, 4'd_0, 4'd_0, 4'd_0}};
+			grid_next = '{'{4'd_1, 4'd_2, 4'd_3, 4'd_1},
+							'{4'd_2, 4'd_1, 4'd_2, 4'd_1},
+							'{4'd_3, 4'd_2, 4'd_1, 4'd_3},
+							'{4'd_4, 4'd_3, 4'd_2, 4'd_1}};
 			point = 0;
 			move_done = 1;
-			goal_next = (goal_in < 4'd_2 | goal_in > 4'd_11 ) ? 4'd_2 : goal_in;
+			goal_next = (goal_in < 4'd_2 | goal_in > 4'd_11 ) ? 4'd_11 : goal_in;
 			if ((~mov_right & mov_right_prev) | (~mov_left & mov_left_prev) |
-				 (~mov_up & mov_up_prev) | (~mov_down & mov_down_prev)) next_state = FIRST_GEN;
+				 (~mov_up & mov_up_prev) | (~mov_down & mov_down_prev)) next_state = PLAY;
 			else next_state = INIT;
 				
 		end
@@ -243,10 +243,10 @@ always_comb begin
 			point = 0;
 			goal_next = goal;
 			move_done = 0;
-			if(grid_prev == grid_left &
-				grid_prev == grid_up &
-				grid_prev == grid_down &
-				grid_prev == grid_right) next_state = CHECK_CAN_ADD;
+			if(grid_next == grid_left &
+				grid_next == grid_up &
+				grid_next == grid_down &
+				grid_next == grid_right) next_state = CHECK_CAN_ADD;
 			else next_state = PLAY;
 			
 		end
@@ -257,10 +257,10 @@ always_comb begin
 			goal_next = goal;
 			move_done = 0;
 			if(count == 4) begin
-				if(grid_prev == grid_left &
-					grid_prev == grid_up &
-					grid_prev == grid_down &
-					grid_prev == grid_right) next_state = DEFEAT;
+				if(grid_next == grid_left &
+					grid_next == grid_up &
+					grid_next == grid_down &
+					grid_next == grid_right) next_state = DEFEAT;
 				else next_state = PLAY;
 			end
 			else next_state = CHECK_CAN_ADD;

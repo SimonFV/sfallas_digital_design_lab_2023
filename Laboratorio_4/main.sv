@@ -4,8 +4,8 @@ module main(input clk_50Mhz, mov_left, mov_right, mov_up, mov_down,
 				output VGA_HS, VGA_VS, 
 				output [7:0] VGA_R, VGA_G, VGA_B, 
 				output VGA_SYNC_N, VGA_CLK, VGA_BLANK_N,
-				output defeat_flag, win_flag,
-				output [6:0] s0, s1, s2, s3, s4);
+				output [6:0] s0, s1, s2, s3, s4,
+				output defeat_flag, win_flag);
 	
 	logic clk_25Mhz = 0;
 	logic _reset = 0;
@@ -30,12 +30,15 @@ module main(input clk_50Mhz, mov_left, mov_right, mov_up, mov_down,
 	display7 d3((points/1000) % 10, s3);
 	display7 d4((points/10000) % 10, s4);
 	
+	logic win, defeat;
+	assign defeat_flag = defeat;
+	assign win_flag = win;
 	
-	FSM _FSM(clk_game, reset, mov_right, mov_left, mov_up, mov_down, goal, matrix, defeat_flag, win_flag, points);
+	FSM _FSM(clk_game, reset, mov_right, mov_left, mov_up, mov_down, goal, matrix, defeat, win, points);
 	
 	// Se procesa la matriz del juego con la posicion del pixel actual para
 	// determinar cual debera ser su color
-	interpreter inter (clk_25Mhz, matrix, next_x, next_y, pixel_color);
+	interpreter inter (clk_25Mhz, matrix, next_x, next_y, win, defeat, pixel_color);
 	
 	
 	// El interprete retorna el valor de color que debe dibujar el driver VGA
