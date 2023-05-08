@@ -1,5 +1,4 @@
-module interpreter(input logic clk,
-						 input logic [3:0] matrix [0:3][0:3],
+module interpreter(input logic [3:0] matrix [0:3][0:3],
 						 input logic [31:0] next_x, next_y,
 						 input logic win, defeat,
 						 output logic [23:0] pixel_color);
