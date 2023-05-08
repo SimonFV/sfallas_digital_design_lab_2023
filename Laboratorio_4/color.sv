@@ -150,7 +150,7 @@ module color(input logic [3:0] value,
 			end
 			
 			// mensaje
-			4'd_11: begin
+			4'd_12: begin
 				if(win == 1) begin
 					if(x >= 0 & x < 8) ascii_char = 7'h56;				//V
 					else if(x >= 8 & x < 16) ascii_char = 7'h49;		//I
