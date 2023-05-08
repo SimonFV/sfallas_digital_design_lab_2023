@@ -157,8 +157,8 @@ module color(input logic [3:0] value,
 					else if(x >= 16 & x < 24) ascii_char = 7'h43;	//C
 					else if(x >= 24 & x < 32) ascii_char = 7'h54;	//T
 					else if(x >= 32 & x < 40) ascii_char = 7'h4f;	//O
-					else if(x >= 40 & x < 48) ascii_char = 7'h59;	//R
-					else if(x >= 48 & x < 56) ascii_char = 7'h54;	//Y
+					else if(x >= 40 & x < 48) ascii_char = 7'h52;	//R
+					else if(x >= 48 & x < 56) ascii_char = 7'h59;	//Y
 					else if(x >= 56 & x < 64) ascii_char = 7'h21;	//!
 					else ascii_char = 7'h00;
 					
@@ -174,7 +174,7 @@ module color(input logic [3:0] value,
 					else if(x >= 40 & x < 48) ascii_char = 7'h4f;	//O
 					else if(x >= 48 & x < 56) ascii_char = 7'h56;	//V
 					else if(x >= 56 & x < 64) ascii_char = 7'h45;	//E
-					else if(x >= 64 & x < 72) ascii_char = 7'h59;	//R
+					else if(x >= 64 & x < 72) ascii_char = 7'h52;	//R
 					else if(x >= 72 & x < 80) ascii_char = 7'h21;	//!
 					else ascii_char = 7'h00;
 					
