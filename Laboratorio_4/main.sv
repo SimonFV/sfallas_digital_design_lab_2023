@@ -11,7 +11,7 @@ module main(input clk_50Mhz, mov_left, mov_right, mov_up, mov_down,
 	logic _reset = 0;
 	
 	logic clk_game = 0;
-	logic [22:0] count_clk_game = 23'd_0;
+	logic [14:0] count_clk_game = 13'd_0;
 	
 	logic [23:0] pixel_color = 24'd_0;
 	
@@ -56,9 +56,9 @@ module main(input clk_50Mhz, mov_left, mov_right, mov_up, mov_down,
 	
 	// Reloj para la fsm del juego
 	always_ff @ (posedge clk_25Mhz) begin
-		count_clk_game <= count_clk_game + 23'd_1;
+		count_clk_game <= count_clk_game + 13'd_1;
 		
-		if(count_clk_game == 23'd_0) clk_game <= ~clk_game;
+		if(count_clk_game == 13'd_0) clk_game <= ~clk_game;
 		else clk_game <= clk_game;
 	end
 		
