@@ -100,15 +100,15 @@ always_comb begin
 	
 		INIT: begin
 			
-			grid_next = '{'{4'd_1, 4'd_2, 4'd_3, 4'd_1},
-							'{4'd_2, 4'd_1, 4'd_2, 4'd_1},
-							'{4'd_3, 4'd_2, 4'd_1, 4'd_3},
-							'{4'd_4, 4'd_3, 4'd_2, 4'd_1}};
+			grid_next = '{'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
+							'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
+							'{4'd_0, 4'd_0, 4'd_0, 4'd_0},
+							'{4'd_0, 4'd_0, 4'd_0, 4'd_0}};
 			point = 0;
 			move_done = 1;
 			goal_next = (goal_in < 4'd_2 | goal_in > 4'd_11 ) ? 4'd_11 : goal_in;
 			if ((~mov_right & mov_right_prev) | (~mov_left & mov_left_prev) |
-				 (~mov_up & mov_up_prev) | (~mov_down & mov_down_prev)) next_state = PLAY;
+				 (~mov_up & mov_up_prev) | (~mov_down & mov_down_prev)) next_state = FIRST_GEN;
 			else next_state = INIT;
 				
 		end
