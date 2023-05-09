@@ -1,0 +1,174 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2022  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
+# Date created = 18:24:37  March 29, 2023
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		vga_driver_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Intel recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE 5CSEMA5F31C6
+set_global_assignment -name TOP_LEVEL_ENTITY main
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 22.1STD.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "18:24:37  MARCH 29, 2023"
+set_global_assignment -name LAST_QUARTUS_VERSION "22.1std.0 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name BOARD "DE1-SoC Board"
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (SystemVerilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH matriz_tb -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME vga_driver_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id vga_driver_tb
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "10 ms" -section_id vga_driver_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME vga_driver_tb -section_id vga_driver_tb
+set_location_assignment PIN_AF14 -to clk_50Mhz
+set_location_assignment PIN_F10 -to VGA_BLANK_N
+set_location_assignment PIN_B13 -to VGA_B[0]
+set_location_assignment PIN_G13 -to VGA_B[1]
+set_location_assignment PIN_H13 -to VGA_B[2]
+set_location_assignment PIN_F14 -to VGA_B[3]
+set_location_assignment PIN_H14 -to VGA_B[4]
+set_location_assignment PIN_F15 -to VGA_B[5]
+set_location_assignment PIN_G15 -to VGA_B[6]
+set_location_assignment PIN_J14 -to VGA_B[7]
+set_location_assignment PIN_A11 -to VGA_CLK
+set_location_assignment PIN_J9 -to VGA_G[0]
+set_location_assignment PIN_J10 -to VGA_G[1]
+set_location_assignment PIN_H12 -to VGA_G[2]
+set_location_assignment PIN_G10 -to VGA_G[3]
+set_location_assignment PIN_G11 -to VGA_G[4]
+set_location_assignment PIN_G12 -to VGA_G[5]
+set_location_assignment PIN_F11 -to VGA_G[6]
+set_location_assignment PIN_E11 -to VGA_G[7]
+set_location_assignment PIN_B11 -to VGA_HS
+set_location_assignment PIN_A13 -to VGA_R[0]
+set_location_assignment PIN_C13 -to VGA_R[1]
+set_location_assignment PIN_E13 -to VGA_R[2]
+set_location_assignment PIN_B12 -to VGA_R[3]
+set_location_assignment PIN_C12 -to VGA_R[4]
+set_location_assignment PIN_D12 -to VGA_R[5]
+set_location_assignment PIN_E12 -to VGA_R[6]
+set_location_assignment PIN_F13 -to VGA_R[7]
+set_location_assignment PIN_C10 -to VGA_SYNC_N
+set_location_assignment PIN_D11 -to VGA_VS
+set_location_assignment PIN_AC12 -to reset
+set_location_assignment PIN_AA14 -to mov_right
+set_location_assignment PIN_Y16 -to mov_left
+set_location_assignment PIN_AA15 -to mov_up
+set_location_assignment PIN_W15 -to mov_down
+set_global_assignment -name EDA_TEST_BENCH_NAME matriz_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id matriz_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME matriz_tb -section_id matriz_tb
+set_global_assignment -name SYSTEMVERILOG_FILE FSM.sv
+set_global_assignment -name SYSTEMVERILOG_FILE counter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE vga_driver.sv
+set_global_assignment -name SYSTEMVERILOG_FILE vga_driver_tb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE main.sv
+set_global_assignment -name SYSTEMVERILOG_FILE interpreter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE color.sv
+set_global_assignment -name SYSTEMVERILOG_FILE comparator.sv
+set_global_assignment -name SYSTEMVERILOG_FILE first_gen.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mov_right.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mov_left.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mov_up.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mov_down.sv
+set_global_assignment -name SYSTEMVERILOG_FILE matriz_tb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE random.sv
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE random_tb.sv
+set_global_assignment -name EDA_TEST_BENCH_NAME random_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id random_tb
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "500 ns" -section_id random_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME random_tb -section_id random_tb
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "5 us" -section_id matriz_tb
+set_global_assignment -name SYSTEMVERILOG_FILE block_generator.sv
+set_global_assignment -name EDA_TEST_BENCH_FILE vga_driver_tb.sv -section_id vga_driver_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE matriz_tb.sv -section_id matriz_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE random_tb.sv -section_id random_tb
+set_location_assignment PIN_V16 -to defeat_flag
+set_location_assignment PIN_Y21 -to win_flag
+set_global_assignment -name SYSTEMVERILOG_FILE display7.sv
+set_global_assignment -name SYSTEMVERILOG_FILE letters_rom.sv
+set_location_assignment PIN_AE26 -to s0[0]
+set_location_assignment PIN_AE27 -to s0[1]
+set_location_assignment PIN_AE28 -to s0[2]
+set_location_assignment PIN_AG27 -to s0[3]
+set_location_assignment PIN_AF28 -to s0[4]
+set_location_assignment PIN_AG28 -to s0[5]
+set_location_assignment PIN_AH28 -to s0[6]
+set_location_assignment PIN_AJ29 -to s1[0]
+set_location_assignment PIN_AH29 -to s1[1]
+set_location_assignment PIN_AH30 -to s1[2]
+set_location_assignment PIN_AG30 -to s1[3]
+set_location_assignment PIN_AF29 -to s1[4]
+set_location_assignment PIN_AF30 -to s1[5]
+set_location_assignment PIN_AD27 -to s1[6]
+set_location_assignment PIN_AB23 -to s2[0]
+set_location_assignment PIN_AE29 -to s2[1]
+set_location_assignment PIN_AD29 -to s2[2]
+set_location_assignment PIN_AC28 -to s2[3]
+set_location_assignment PIN_AD30 -to s2[4]
+set_location_assignment PIN_AC29 -to s2[5]
+set_location_assignment PIN_AC30 -to s2[6]
+set_location_assignment PIN_AD26 -to s3[0]
+set_location_assignment PIN_AC27 -to s3[1]
+set_location_assignment PIN_AD25 -to s3[2]
+set_location_assignment PIN_AC25 -to s3[3]
+set_location_assignment PIN_AB28 -to s3[4]
+set_location_assignment PIN_AB25 -to s3[5]
+set_location_assignment PIN_AB22 -to s3[6]
+set_location_assignment PIN_AA24 -to s4[0]
+set_location_assignment PIN_Y23 -to s4[1]
+set_location_assignment PIN_Y24 -to s4[2]
+set_location_assignment PIN_W22 -to s4[3]
+set_location_assignment PIN_W24 -to s4[4]
+set_location_assignment PIN_V23 -to s4[5]
+set_location_assignment PIN_W25 -to s4[6]
+set_location_assignment PIN_AE12 -to goal[3]
+set_location_assignment PIN_AD10 -to goal[2]
+set_location_assignment PIN_AC9 -to goal[1]
+set_location_assignment PIN_AE11 -to goal[0]
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
