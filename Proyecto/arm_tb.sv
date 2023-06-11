@@ -1,16 +1,20 @@
+`timescale 1 ns / 1 ns
+
 module arm_tb();
 
 	logic clk;
 	logic reset;
 	logic [31:0] WriteData, DataAdr;
 	logic MemWrite;
+	logic [6:0] s0, s1, s2;
+	logic led_success;
 	
 	// instantiate device to be tested
-	top_arm dut(clk, reset, WriteData, DataAdr, MemWrite);
+	top_arm dut(clk, reset, WriteData, DataAdr, MemWrite, s0, s1, s2, led_success);
 	
 	// initialize test
 	initial begin
-		reset <= 1; # 22; reset <= 0;
+		reset <= 1; # 16; reset <= 0;
 	end
 	
 	// generate clock to sequence tests
@@ -25,10 +29,8 @@ module arm_tb();
 		if(MemWrite) begin
 			if(DataAdr === 100 & WriteData === 7) begin
 				$display("Simulation succeeded");
-				$stop;
 			end else if (DataAdr !== 96) begin
 				$display("Simulation failed");
-				$stop;
 			end
 		end
 	end
