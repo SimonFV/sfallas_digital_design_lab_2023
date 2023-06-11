@@ -6,11 +6,11 @@ module arm_tb();
 	logic reset;
 	logic [31:0] WriteData, DataAdr;
 	logic MemWrite;
-	logic [6:0] s0, s1, s2;
+	logic [6:0] s0, s1, s2,s3;
 	logic led_success;
 	
 	// instantiate device to be tested
-	top_arm dut(clk, reset, WriteData, DataAdr, MemWrite, s0, s1, s2, led_success);
+	top_arm dut(clk, reset, WriteData, DataAdr, MemWrite, s0, s1, s2,s3, led_success);
 	
 	// initialize test
 	initial begin
