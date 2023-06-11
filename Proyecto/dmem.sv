@@ -11,7 +11,7 @@ module dmem(input logic clk, we,
 		if (we) DRAM[a[31:2]] <= wd;
 	*/
 	
-	RAM iram(a[9:2], clk, wd, we, rd);
+	RAM iram(a[9:2], ~clk, wd, we, rd);
 	
 		
 endmodule
