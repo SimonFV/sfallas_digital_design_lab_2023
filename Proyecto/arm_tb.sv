@@ -10,7 +10,7 @@ module arm_tb();
 	logic led_success;
 	
 	// instantiate device to be tested
-	top_arm dut(clk, reset, WriteData, DataAdr, MemWrite, s0, s1, s2,s3, led_success);
+	top_arm dut(clk, reset, s0, s1, s2,s3, led_success);
 	
 	// initialize test
 	initial begin
