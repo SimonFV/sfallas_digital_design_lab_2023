@@ -3,7 +3,10 @@ module top_arm(input logic clk_50Mhz, reset,
 					//output logic MemWrite,
 					output logic [6:0] s0, s1, s2,s3,
 					output logic led_success);
-
+	
+	logic [31:0] WriteData = 32'd_0;
+	logic [31:0] DataAdr = 32'd_0;
+	logic MemWrite = 0;
 	
 	logic [31:0] PC = 32'd_0;
 	logic [31:0] Instr, ReadData;
