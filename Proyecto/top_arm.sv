@@ -1,7 +1,7 @@
 module top_arm(input logic clk_50Mhz, reset,
 					//output logic [31:0] WriteData, DataAdr,
 					//output logic MemWrite,
-					output logic [6:0] s0, s1, s2,
+					output logic [6:0] s0, s1, s2,s3,
 					output logic led_success);
 
 	
@@ -17,14 +17,15 @@ module top_arm(input logic clk_50Mhz, reset,
 	
 	dmem dmem(clk, MemWrite, DataAdr, WriteData, ReadData);
 	
-	display7 d0(PC % 10, s0);
-	display7 d1((PC/10) % 10, s1);
-	display7 d2((PC/100) % 10, s2);
+	display7 d0(DataAdr % 10, s0);
+	display7 d1((DataAdr/10) % 10, s1);
+	display7 d2((DataAdr/100) % 10, s2);
+	display7 d3(WriteData % 10, s3);
 	
 	always_comb begin
 		
 		if(PC > 32'd_100) clk = 0;
-		else clk = ~clk_50Mhz;
+		else clk = clk_50Mhz;
 		
 		if(DataAdr === 100 & WriteData === 7) begin
 			led_success = 1;
