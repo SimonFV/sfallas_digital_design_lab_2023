@@ -19,7 +19,6 @@ module main(input logic clk_50Mhz_in, reset,
 	// Para acceder a los pixeles de la imagen en la ROM
 	logic [7:0] pixel_a, pixel_b;
 	logic [15:0] pixelAdrA, pixelAdrB;
-	assign pixelAdr = 16'd_285;
 	
 	
 	// Para controlar los puertos del Driver VGA
