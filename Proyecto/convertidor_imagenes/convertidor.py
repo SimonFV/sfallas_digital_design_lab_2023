@@ -1,28 +1,32 @@
 from PIL import Image
 import numpy as np
 
+MAX_SIZE = 65536
 
 ## Genera el archivo .mif para cargar los datos de la imagen en la ROM
 def generate_mif_file(grey_image_array):
     image_width = len(grey_image_array[0])
     image_depth = len(grey_image_array)
 
-    string_datos = "WIDTH=" + str(8) + ";\n" + "DEPTH=" + str(image_width*image_depth) + ";\n\n"
+    string_datos = "-- Imagen Generada\n\n"
+    string_datos += "WIDTH=" + str(8) + ";\n" + "DEPTH=" + str(MAX_SIZE) + ";\n\n"
     string_datos += "ADDRESS_RADIX=UNS;\nDATA_RADIX=HEX;\n\n"
 
     string_datos += "CONTENT BEGIN\n"
 
     for i in range(image_depth):
-        string_datos += "[" + str(i*image_width) + ".." + str(i*image_width + image_width - 1) + "] : "
-        
         for j in range(image_width):
-            string_datos += format(int(grey_image_array[i][j]), '02x') + " "
-        
-        string_datos += "\n"
+
+            string_datos += str(i*image_width + j) + " : "
+            string_datos += format(int(grey_image_array[i][j]), '02x') + ";\n"
+    
+
+    if (image_depth * image_width < MAX_SIZE):
+        string_datos += "[" + str(image_depth * image_width) + ".." + str(MAX_SIZE - 1) + "] : 00 ; \n"
 
     string_datos += "END;\n"
 
-    with open("image_hex_data.mif", "w") as mif_file:
+    with open("../image_hex_data.mif", "w") as mif_file:
         mif_file.write(string_datos)
 
 

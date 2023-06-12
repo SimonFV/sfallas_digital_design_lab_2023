@@ -4,13 +4,22 @@ module arm_tb();
 
 	logic clk;
 	logic reset;
-	logic [31:0] WriteData, DataAdr;
-	logic MemWrite;
 	logic [6:0] s0, s1, s2,s3;
 	logic led_success;
 	
+	logic h_sync, v_sync;
+	logic [7:0] red_out, green_out, blue_out;
+	logic sync_n_out, clk_out, blank_out;
+	
 	// instantiate device to be tested
-	top_arm dut(clk, reset, s0, s1, s2,s3, led_success);
+	main dut(clk, reset, 
+				
+				h_sync, v_sync,
+				red_out, green_out, blue_out,
+				sync_n_out, clk_out, blank_out,
+				
+				s0, s1, s2,s3,
+				led_success);
 	
 	// initialize test
 	initial begin
@@ -22,16 +31,4 @@ module arm_tb();
 		clk <= 1; # 5; clk <= 0; # 5;
 	end
 
-	// check that 7 gets written to address 0x64
-	// at end of program
-	always @(negedge clk)
-	begin
-		if(MemWrite) begin
-			if(DataAdr === 100 & WriteData === 7) begin
-				$display("Simulation succeeded");
-			end else if (DataAdr !== 96) begin
-				$display("Simulation failed");
-			end
-		end
-	end
 endmodule
