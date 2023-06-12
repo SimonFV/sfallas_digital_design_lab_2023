@@ -2,9 +2,54 @@
 		ADD		R1, R0, #0x00000100
 		
 		
-		;		guarda [4, 4, 4, 4]
+		;		guarda [4, 4, 4, 4, 4]
 		ADD		R3, R0, #4
-		STRB		R3, [R1, #0]
-		STRB		R3, [R1, #1]
-		STRB		R3, [R1, #2]
-		STRB		R3, [R1, #3]
+		STR		R3, [R1, #0]
+		STR		R3, [R1, #4]
+		STR		R3, [R1, #8]
+		STR		R3, [R1, #12]
+		STR		R3, [R1, #16]
+		
+		;		guarda [3, 4, 5, 4, 3]
+		ADD		R3, R0, #3
+		STR		R3, [R1, #20]
+		ADD		R3, R0, #4
+		STR		R3, [R1, #24]
+		ADD		R3, R0, #5
+		STR		R3, [R1, #28]
+		ADD		R3, R0, #4
+		STR		R3, [R1, #32]
+		ADD		R3, R0, #3
+		STR		R3, [R1, #36]
+		
+		;		guarda [3, 5, 5, 5, 3]
+		ADD		R3, R0, #3
+		STR		R3, [R1, #40]
+		ADD		R3, R0, #5
+		STR		R3, [R1, #44]
+		ADD		R3, R0, #5
+		STR		R3, [R1, #48]
+		ADD		R3, R0, #5
+		STR		R3, [R1, #52]
+		ADD		R3, R0, #3
+		STR		R3, [R1, #56]
+		
+		;		guarda [3, 4, 5, 4, 3]
+		ADD		R3, R0, #3
+		STR		R3, [R1, #60]
+		ADD		R3, R0, #4
+		STR		R3, [R1, #64]
+		ADD		R3, R0, #5
+		STR		R3, [R1, #68]
+		ADD		R3, R0, #4
+		STR		R3, [R1, #72]
+		ADD		R3, R0, #3
+		STR		R3, [R1, #76]
+		
+		;		guarda [4, 4, 4, 4, 4]
+		ADD		R3, R0, #4
+		STR		R3, [R1, #80]
+		STR		R3, [R1, #84]
+		STR		R3, [R1, #88]
+		STR		R3, [R1, #92]
+		STR		R3, [R1, #96]
