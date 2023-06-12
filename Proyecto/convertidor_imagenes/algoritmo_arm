@@ -1,0 +1,10 @@
+		SUB		R0, R15, #8
+		ADD		R1, R0, #0x00000100
+		
+		
+		;		guarda [4, 4, 4, 4]
+		ADD		R3, R0, #4
+		STRB		R3, [R1, #0]
+		STRB		R3, [R1, #1]
+		STRB		R3, [R1, #2]
+		STRB		R3, [R1, #3]

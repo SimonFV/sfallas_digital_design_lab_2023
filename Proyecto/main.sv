@@ -17,8 +17,8 @@ module main(input logic clk_50Mhz_in, reset,
 	
 	
 	// Para acceder a los pixeles de la imagen en la ROM
-	logic [7:0] pixel_a, pixel_b;
-	logic [15:0] pixelAdrA, pixelAdrB;
+	logic [31:0] pixelOriginalA, pixelOriginalB;
+	logic [15:0] pixelAdrOriginalA, pixelAdrOriginalB;
 	
 	
 	// Para controlar los puertos del Driver VGA
@@ -48,14 +48,16 @@ module main(input logic clk_50Mhz_in, reset,
 	
 	
 	// ROM que guarda los datos de la imagen (256x256 tamaño máximo)
-	ROM2 image_rom(pixelAdrA, pixelAdrB, clk_50Mhz, pixel_a, pixel_b);
+	ROM2 image_rom(pixelAdrOriginalA, pixelAdrOriginalB, 
+						clk_50Mhz, 
+						pixelOriginalA, pixelOriginalB);
 	
 	
 	
 	// Interprete para ayudarle al Driver VGA a dibujar las dos imagenes
 	interpreter inter(next_x, next_y,
-						   pixel_b, ReadDataB[7:0],
-							pixelAdrB, DataAdrB,
+						   pixelOriginalB, ReadDataB,
+							pixelAdrOriginalB, DataAdrB,
 						   pixel_color);
 	
 	// Driver VGA (para mostrar las dos imagenes en pantalla)

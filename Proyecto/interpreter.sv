@@ -1,5 +1,5 @@
 module interpreter(input logic [31:0] next_x, next_y,
-						 input logic [7:0] pixel_value_original, pixel_value_new,
+						 input logic [31:0] pixel_value_original, pixel_value_new,
 						 
 						 output logic [15:0] adr_original,
 						 output logic [31:0] adr_new,
@@ -18,17 +18,17 @@ module interpreter(input logic [31:0] next_x, next_y,
 	always_comb begin
 		
 		// Imagen Original
-		if (next_x >= 10 & next_x < 266 & next_y >= 10 & next_y < 266) 
+		if (next_x >= 0 & next_x < 256 & next_y >= 0 & next_y < 256) 
 		begin
-			color = pixel_value_original;
-			address = (next_y - 10) * (next_x - 10);
+			color = pixel_value_original[7:0];
+			address = (next_y * 256) + next_x;
 		end
 		
 		// Imagen Nueva
-		else if (next_x >= 276 & next_x < 532 & next_y >= 10 & next_y < 266) 
+		else if (next_x >= 266 & next_x < 522 & next_y >= 0 & next_y < 256) 
 		begin
-			color = pixel_value_new;
-			address = (next_y - 276) * (next_x - 10);
+			color = pixel_value_new[7:0];
+			address = (next_y * 256) + next_x - 266;
 		end
 		
 		else 

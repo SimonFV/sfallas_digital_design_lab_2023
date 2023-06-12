@@ -18,7 +18,7 @@ def generate_mif_file(grey_image_array):
         for j in range(image_width):
 
             string_datos += str(i*image_width + j) + " : "
-            string_datos += format(int(grey_image_array[i][j]), '02x') + ";\n"
+            string_datos += format(int(grey_image_array[i][j]), '08x') + ";\n"
     
 
     if (image_depth * image_width < MAX_SIZE):
@@ -39,7 +39,9 @@ def save_grey_image(grey_image_array):
 
 ## Convierte una imagen a una matriz de numpy en escala de grises, rango [0 (negro), 255 (blanco)]
 def convert(file_name):
-    image_array = np.array(Image.open(file_name))
+    image = Image.open(file_name)
+    new_image = image.resize((256, 256))
+    image_array = np.array(new_image)
     grey_image_array = np.empty([len(image_array), len(image_array[0])])
 
     for i in range(len(image_array)):
@@ -56,7 +58,7 @@ def convert(file_name):
 
 
     
-grey_image_array = convert('imagenes/one_piece.png')
+grey_image_array = convert('imagenes/marte.png')
 
 save_grey_image(grey_image_array)
 generate_mif_file(grey_image_array)

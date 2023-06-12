@@ -14,22 +14,14 @@ module dmem(input logic clk,
 	
 	
 	
-	logic [7:0] q_a, q_b;
-	
-	logic [7:0] wd_b = 8'd_0;
+	logic [31:0] wd_b = 32'd_0;
 	logic we_b = 0;
 	
 	RAM2 iram(a[19:2], b[19:2],
 				 ~clk, 
-				 wd_a[7:0], wd_b, 
+				 wd_a, wd_b, 
 				 we_a, we_b, 
-				 q_a, q_b);
-				 
-	assign rd_a[31:8] = 24'd_0;
-	assign rd_a[7:0] = q_a;
-	
-	assign rd_b[31:8] = 24'd_0;
-	assign rd_b[7:0] = q_b;
+				 rd_a, rd_b);
 	
 		
 endmodule
