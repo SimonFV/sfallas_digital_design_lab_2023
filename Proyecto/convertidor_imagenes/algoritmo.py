@@ -1,4 +1,4 @@
-
+import numpy as np
 import convertidor as c
 
 
@@ -87,6 +87,8 @@ print(frecuencia_distribuida)
 print(frecuencia_distribuida_acumulada)
 print(remapeo_final)
 
+image_array = np.array(I_2)
+c.save_grey_image(image_array, "resultado")
 
 # imagen inicial
 #print("\nimagen inicial")
@@ -94,6 +96,9 @@ print(remapeo_final)
 #    print(row)
 
 # imagen final
-#print("\nimagen final")
-#for row in I_2:
-#    print(row)
+string_datos = ""
+for row in I_2:
+    string_datos += str(row) + "\n"
+
+with open("prueba.txt", "w") as txt_file:
+        txt_file.write(string_datos)

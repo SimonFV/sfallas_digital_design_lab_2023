@@ -9,7 +9,7 @@ def generate_mif_file(grey_image_array):
     image_depth = len(grey_image_array)
 
     string_datos = "-- Imagen Generada\n\n"
-    string_datos += "WIDTH=" + str(8) + ";\n" + "DEPTH=" + str(MAX_SIZE) + ";\n\n"
+    string_datos += "WIDTH=" + str(32) + ";\n" + "DEPTH=" + str(MAX_SIZE) + ";\n\n"
     string_datos += "ADDRESS_RADIX=UNS;\nDATA_RADIX=HEX;\n\n"
 
     string_datos += "CONTENT BEGIN\n"
@@ -31,10 +31,10 @@ def generate_mif_file(grey_image_array):
 
 
 ## Guarda la matriz en una imagen en escala de grises
-def save_grey_image(grey_image_array):
+def save_grey_image(grey_image_array, name):
     grey_image = Image.fromarray(grey_image_array)
     grey_image = grey_image.convert("L")
-    grey_image.save('grey_image.png')
+    grey_image.save(name + ".png")
 
 
 ## Convierte una imagen a una matriz de numpy en escala de grises, rango [0 (negro), 255 (blanco)]

@@ -37,7 +37,7 @@ module decoder(input logic [1:0] Op,
 			4'b0010: ALUControl = 3'b001; // SUB
 			4'b0000: ALUControl = 3'b010; // AND
 			4'b1100: ALUControl = 3'b011; // ORR
-			4'b1101: ALUControl = 3'b100; // LSL
+			4'b1101: ALUControl = 3'b100; // Shift
 			default: ALUControl = 3'bx; // unimplemented
 	  endcase
 	  // update flags if S bit is set (C & V only for arith)

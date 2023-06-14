@@ -6,13 +6,13 @@ module alu #(parameter N = 32)
 	     output logic [N-1:0] Result,
 	     output logic [3:0] ALUFlags);
 
-   logic [N-1:0] resultADD, resultSUB, resultAND, resultOR, resultLSL;
+   logic [N-1:0] resultADD, resultSUB, resultAND, resultOR, resultShift;
    logic	 cout, coutADD, coutSUB;
 
    adderalu #(32) adder_inst(a, b, 1'b0, resultADD, coutADD);
    adderalu #(32) subtractor_inst(a, ~b, 1'b1, resultSUB, coutSUB);
 	
-	barrel_shifter b_shifter(b, ShiftType, Shamt, resultLSL);
+	barrel_shifter b_shifter(b, ShiftType, Shamt, resultShift);
 	
    assign resultAND = a & b;
    assign resultOR = a | b;
@@ -43,9 +43,9 @@ module alu #(parameter N = 32)
 				cout = 0;
 			end
 			
-			3'b100:	// LSL
+			3'b100:	// Shift
 			begin
-				Result = resultLSL;
+				Result = resultShift;
 				cout = 0;
 			end
 			
