@@ -1,14 +1,13 @@
 
-N = 8
+import convertidor as c
+
+
+
 
 ## PASO 1
 
-I = [[4, 4, 4, 4, 4],
-     [3, 4, 5, 4, 3],
-     [3, 5, 5, 5, 3],
-     [3, 4, 5, 4, 3],
-     [4, 4, 4, 4, 4]]
-
+I = c.convert('imagenes/marte.png').astype(int).tolist()
+N = len(I)
 
 ## PASO 2
 
@@ -68,7 +67,7 @@ for index in range(N):
 
 ## PASO 7
 
-w, h = 5, 5
+w, h = N, N
 I_2 = [[0 for x in range(w)] for y in range(h)]
 
 for row in range(len(I_2)):
@@ -88,12 +87,13 @@ print(frecuencia_distribuida)
 print(frecuencia_distribuida_acumulada)
 print(remapeo_final)
 
+
 # imagen inicial
-print("\nimagen inicial")
-for row in I:
-    print(row)
+#print("\nimagen inicial")
+#for row in I:
+#    print(row)
 
 # imagen final
-print("\nimagen final")
-for row in I_2:
-    print(row)
+#print("\nimagen final")
+#for row in I_2:
+#    print(row)

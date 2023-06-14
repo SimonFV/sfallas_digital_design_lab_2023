@@ -1,55 +1,202 @@
-		SUB		R0, R15, #8
-		ADD		R1, R0, #0x00000100
-		
-		
-		;		guarda [4, 4, 4, 4, 4]
-		ADD		R3, R0, #4
-		STR		R3, [R1, #0]
-		STR		R3, [R1, #4]
-		STR		R3, [R1, #8]
-		STR		R3, [R1, #12]
-		STR		R3, [R1, #16]
-		
-		;		guarda [3, 4, 5, 4, 3]
-		ADD		R3, R0, #3
-		STR		R3, [R1, #20]
-		ADD		R3, R0, #4
-		STR		R3, [R1, #24]
-		ADD		R3, R0, #5
-		STR		R3, [R1, #28]
-		ADD		R3, R0, #4
-		STR		R3, [R1, #32]
-		ADD		R3, R0, #3
-		STR		R3, [R1, #36]
-		
-		;		guarda [3, 5, 5, 5, 3]
-		ADD		R3, R0, #3
-		STR		R3, [R1, #40]
-		ADD		R3, R0, #5
-		STR		R3, [R1, #44]
-		ADD		R3, R0, #5
-		STR		R3, [R1, #48]
-		ADD		R3, R0, #5
-		STR		R3, [R1, #52]
-		ADD		R3, R0, #3
-		STR		R3, [R1, #56]
-		
-		;		guarda [3, 4, 5, 4, 3]
-		ADD		R3, R0, #3
-		STR		R3, [R1, #60]
-		ADD		R3, R0, #4
-		STR		R3, [R1, #64]
-		ADD		R3, R0, #5
-		STR		R3, [R1, #68]
-		ADD		R3, R0, #4
-		STR		R3, [R1, #72]
-		ADD		R3, R0, #3
-		STR		R3, [R1, #76]
-		
-		;		guarda [4, 4, 4, 4, 4]
-		ADD		R3, R0, #4
-		STR		R3, [R1, #80]
-		STR		R3, [R1, #84]
-		STR		R3, [R1, #88]
-		STR		R3, [R1, #92]
-		STR		R3, [R1, #96]
+			SUB		R0, R15, #8
+			ADD		R1, R0, #0x10000
+			
+			
+			;		guarda [4, 4, 4, 4, 4]
+			ADD		R3, R0, #4
+			STR		R3, [R1, #0]
+			STR		R3, [R1, #4]
+			STR		R3, [R1, #8]
+			STR		R3, [R1, #12]
+			STR		R3, [R1, #16]
+			
+			;		guarda [3, 4, 5, 4, 3]
+			ADD		R3, R0, #3
+			STR		R3, [R1, #20]
+			ADD		R3, R0, #4
+			STR		R3, [R1, #24]
+			ADD		R3, R0, #5
+			STR		R3, [R1, #28]
+			ADD		R3, R0, #4
+			STR		R3, [R1, #32]
+			ADD		R3, R0, #3
+			STR		R3, [R1, #36]
+			
+			;		guarda [3, 5, 5, 5, 3]
+			ADD		R3, R0, #3
+			STR		R3, [R1, #40]
+			ADD		R3, R0, #5
+			STR		R3, [R1, #44]
+			ADD		R3, R0, #5
+			STR		R3, [R1, #48]
+			ADD		R3, R0, #5
+			STR		R3, [R1, #52]
+			ADD		R3, R0, #3
+			STR		R3, [R1, #56]
+			
+			;		guarda [3, 4, 5, 4, 3]
+			ADD		R3, R0, #3
+			STR		R3, [R1, #60]
+			ADD		R3, R0, #4
+			STR		R3, [R1, #64]
+			ADD		R3, R0, #5
+			STR		R3, [R1, #68]
+			ADD		R3, R0, #4
+			STR		R3, [R1, #72]
+			ADD		R3, R0, #3
+			STR		R3, [R1, #76]
+			
+			;		guarda [4, 4, 4, 4, 4]
+			ADD		R3, R0, #4
+			STR		R3, [R1, #80]
+			STR		R3, [R1, #84]
+			STR		R3, [R1, #88]
+			STR		R3, [R1, #92]
+			STR		R3, [R1, #96]
+			
+			
+			;		PASO 2
+			
+			ADD		R2, R0, #0		; R2 : index
+			ADD		R5, R1, #0x200		; R5 direccion base donde se guarda la distribucion de pixeles
+			
+for
+			SUBS		R4, R2, #25		; se activa la bandera 0 cuando R2 == 25
+			BEQ		endfor 			; termina el loop
+			
+			LSL		R7, R2, #2		; se hace un shift left 2 posiciones para multiplicar por 4
+			LDR		R3, [R1, R7]
+			
+			LSL		R3, R3, #2
+			LDR		R6, [R5, R3]
+			ADD		R6, R6, #1
+			STR		R6, [R5, R3]
+			
+			ADD		R2, R2, #1
+			B		for
+endfor
+			
+			;		PASO 3
+			
+			ADD		R2, R0, #0		; R2 : index
+			ADD		R8, R1, #0x300		; R8 direccion base donde se guarda la frecuencia acumulada
+for2
+			SUBS		R4, R2, #8
+			BEQ		endfor2
+			
+			LSL		R7, R2, #2
+			LDR		R3, [R5, R7]
+			
+			SUB		R7, R7, #4
+			LDR		R6, [R8, R7]
+			
+			ADD		R6, R6, R3
+			ADD		R7, R7, #4
+			STR		R6, [R8, R7]
+			
+			ADD		R2, R2, #1
+			B		for2
+endfor2
+			
+			
+			;		PASO 4 y 5
+			
+			ADD		R2, R0, #0		; R2 : index
+			ADD		R9, R1, #0x400		; R9 direccion base donde se guarda la frecuencia distribuida acumulada
+			ADD		R3, R0, #4
+			LSL		R7, R2, #2
+			STR		R3, [R9, R7]
+			ADD		R2, R2, #1
+			
+for3
+			SUBS		R4, R2, #8
+			BEQ		endfor3
+			
+			LSL		R7, R2, #2
+			SUB		R7, R7, #4
+			LDR		R3, [R9, R7]
+			ADD		R3, R3, #3
+			
+			ADD		R7, R7, #4
+			STR		R3, [R9, R7]
+			
+			ADD		R2, R2, #1
+			B		for3
+endfor3
+			
+			
+			
+			;		PASO 6
+			
+			ADD		R2, R0, #0		; R2 : index
+			ADD		R10, R1, #0x500	; R10 direccion base donde se guarda el remapeo final
+for5
+			SUBS		R4, R2, #8
+			BEQ		endfor5
+			
+			LSL		R7, R2, #2
+			LDR		R3, [R8, R7]		; R3 : Cuf[index]
+			
+			ADD		R11, R0, #0		; R11 : temp index
+			LDR		R6, [R9, R7]
+			ADD		R6, R6, #1		; R6 : menor
+			
+			
+			
+			
+			ADD		R12, R0, #0	; R12 : index 2
+for4
+			SUBS		R4, R12, #8
+			BEQ		endfor4
+			
+			LSL		R7, R12, #2
+			LDR		R7, [R9, R7]
+			
+			SUBS		R4, R7, R3
+			BGE		comparacion
+			SUBS		R4, R3, R7	; R4 : diff
+			
+comparacion
+			SUBS		R5, R4, R6
+			BGE		comparacion2
+			ADD		R11, R12, #0
+			ADD		R6, R4, #0
+			
+comparacion2
+			ADD		R12, R12, #1
+			B		for4
+			
+endfor4
+			
+			
+			
+			
+			LSL		R7, R2, #2			; se guarda el remapeo final
+			STR		R11, [R10, R7]
+			
+			ADD		R2, R2, #1
+			B		for5
+endfor5
+			
+			
+			
+			;		PASO 7
+			ADD		R2, R0, #0		; R2 : index
+			ADD		R5, R1, #0x600		; R5 direccion base donde se guarda la imagen final
+			
+for6
+			SUBS		R4, R2, #25		; se activa la bandera 0 cuando R2 == 25
+			BEQ		endfor6 			; termina el loop
+			
+			LSL		R7, R2, #2
+			LDR		R3, [R1, R7]		; R3 valor de pixel en imagen original
+			
+			LSL		R7, R3, #2
+			LDR		R6, [R10, R7]		; R6 valor en el remapeo final segun R3
+			
+			LSL		R7, R2, #2		; se guarda el valor en la imagen nueva
+			STR		R6, [R5, R7]
+			
+			ADD		R2, R2, #1
+			B		for6
+endfor6

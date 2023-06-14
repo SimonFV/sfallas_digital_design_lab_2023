@@ -12,7 +12,7 @@ module main(input logic clk_50Mhz_in, reset,
 	
 	logic [31:0] PC = 32'd_0;
 	logic [31:0] Instr, ReadDataA, ReadDataB;
-	logic clk_50Mhz;
+	logic clk_50Mhz_ARM;
 	
 	
 	
@@ -34,14 +34,14 @@ module main(input logic clk_50Mhz_in, reset,
 	
 	
 	// Procesador ARM uniciclo
-	arm arm(clk_50Mhz, reset, PC, Instr, MemWriteEnable, DataAdrA,
+	arm arm(clk_50Mhz_ARM, reset, PC, Instr, MemWriteEnable, DataAdrA,
 				WriteData, ReadDataA);
 	
 	// RAM con las instrucciones del algoritmo ecualizador
-	imem imem(PC, clk_50Mhz, Instr);
+	imem imem(PC, Instr);
 	
 	// RAM para guardar la imagen ecualizada y los datos de las operaciones
-	dmem dmem(clk_50Mhz, 
+	dmem dmem(clk_50Mhz_in, 
 				 DataAdrA, DataAdrB, 
 				 WriteData, MemWriteEnable,
 				 ReadDataA, ReadDataB);
@@ -49,7 +49,7 @@ module main(input logic clk_50Mhz_in, reset,
 	
 	// ROM que guarda los datos de la imagen (256x256 tamaño máximo)
 	ROM2 image_rom(pixelAdrOriginalA, pixelAdrOriginalB, 
-						clk_50Mhz, 
+						clk_50Mhz_in, 
 						pixelOriginalA, pixelOriginalB);
 	
 	
@@ -84,8 +84,8 @@ module main(input logic clk_50Mhz_in, reset,
 	
 	always_comb begin
 		
-		if(PC > 32'd_100) clk_50Mhz = 0;
-		else clk_50Mhz = clk_50Mhz_in;
+		if(PC > 32'd_200) clk_50Mhz_ARM = 0;
+		else clk_50Mhz_ARM = clk_50Mhz_in;
 		
 		/*
 		if(DataAdr === 100 & WriteData === 7) begin

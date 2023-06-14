@@ -1,42 +1,60 @@
 module alu #(parameter N = 32)
 	    (input  logic [N-1:0] a, b,
-	     input  logic [1:0]   ALUControl,
+	     input  logic [2:0]   ALUControl,
+		  input logic [4:0] Shamt,
+		  input logic [1:0] ShiftType,
 	     output logic [N-1:0] Result,
-	     output logic [3:0]   ALUFlags);
+	     output logic [3:0] ALUFlags);
 
-   logic [N-1:0] resultADD, resultSUB, resultAND, resultOR;
+   logic [N-1:0] resultADD, resultSUB, resultAND, resultOR, resultLSL;
    logic	 cout, coutADD, coutSUB;
 
    adderalu #(32) adder_inst(a, b, 1'b0, resultADD, coutADD);
    adderalu #(32) subtractor_inst(a, ~b, 1'b1, resultSUB, coutSUB);
+	
+	barrel_shifter b_shifter(b, ShiftType, Shamt, resultLSL);
+	
    assign resultAND = a & b;
    assign resultOR = a | b;
 
    always_comb begin 
 		case (ALUControl)
-			2'b00:	// Add
+			3'b000:	// Add
 			begin
 				Result = resultADD;
 				cout = coutADD;
 			end
 			
-			2'b01:	// Subtract
+			3'b001:	// Subtract
 			begin
 				Result = resultSUB;
 				cout = coutSUB;
 			end
 			
-			2'b10:	// AND
+			3'b010:	// AND
 			begin
 				Result = resultAND;
 				cout = 0;
 			end
 			
-			2'b11:	// OR
+			3'b011:	// OR
 			begin
 				Result = resultOR;
 				cout = 0;
 			end
+			
+			3'b100:	// LSL
+			begin
+				Result = resultLSL;
+				cout = 0;
+			end
+			
+			default: 
+			begin
+				Result = 32'b0;
+				cout = 0;
+			end
+			
       endcase
    end
 	
