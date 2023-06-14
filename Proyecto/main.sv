@@ -84,7 +84,7 @@ module main(input logic clk_50Mhz_in, reset,
 	
 	always_comb begin
 		
-		if(PC > 32'd_200) clk_50Mhz_ARM = 0;
+		if(PC > 32'd_300) clk_50Mhz_ARM = 0;
 		else clk_50Mhz_ARM = clk_50Mhz_in;
 		
 		/*
