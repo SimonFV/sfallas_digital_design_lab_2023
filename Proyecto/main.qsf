@@ -57,12 +57,11 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH arm_tb -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH vga_tb -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_NAME arm_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id arm_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME arm_tb -section_id arm_tb
-set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "500 ns" -section_id arm_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE arm_tb.sv -section_id arm_tb
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "100 ns" -section_id arm_tb
 set_location_assignment PIN_V16 -to led_success
 set_location_assignment PIN_AC12 -to reset
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
@@ -126,4 +125,23 @@ set_location_assignment PIN_G15 -to VGA_B[6]
 set_location_assignment PIN_J14 -to VGA_B[7]
 set_location_assignment PIN_AF14 -to clk_50Mhz_in
 set_global_assignment -name SYSTEMVERILOG_FILE barrel_shifter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE main_tb.sv
+set_global_assignment -name EDA_TEST_BENCH_NAME main_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id main_tb
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "25 ms" -section_id main_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME main_tb -section_id main_tb
+set_global_assignment -name SYSTEMVERILOG_FILE imem_tb.sv
+set_global_assignment -name EDA_TEST_BENCH_NAME imem_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id imem_tb
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "100 ns" -section_id imem_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME imem_tb -section_id imem_tb
+set_global_assignment -name SYSTEMVERILOG_FILE vga_tb.sv
+set_global_assignment -name EDA_TEST_BENCH_FILE arm_tb.sv -section_id arm_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE main_tb.sv -section_id main_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE imem_tb.sv -section_id imem_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME vga_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id vga_tb
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "100 ns" -section_id vga_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME vga_tb -section_id vga_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE vga_tb.sv -section_id vga_tb
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

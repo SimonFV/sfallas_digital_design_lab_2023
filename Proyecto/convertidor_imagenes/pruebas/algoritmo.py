@@ -6,7 +6,7 @@ import convertidor as c
 
 ## PASO 1
 
-I = c.convert('imagenes/marte.png').astype(int).tolist()
+I = c.convert('../imagenes/marte.png').astype(int).tolist()
 N = len(I)
 
 ## PASO 2
