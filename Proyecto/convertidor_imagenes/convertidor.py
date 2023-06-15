@@ -58,7 +58,7 @@ def convert(file_name):
 
 
     
-#grey_image_array = convert('imagenes/marte.png')
+grey_image_array = convert('imagenes/marte.png')
 
 #save_grey_image(grey_image_array)
-#generate_mif_file(grey_image_array)
+generate_mif_file(grey_image_array)

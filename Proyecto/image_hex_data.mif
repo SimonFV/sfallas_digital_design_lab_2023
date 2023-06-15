@@ -1,6 +1,6 @@
 -- Imagen Generada
 
-WIDTH=8;
+WIDTH=32;
 DEPTH=65536;
 
 ADDRESS_RADIX=UNS;
