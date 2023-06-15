@@ -65,34 +65,6 @@ set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "500 ns" -section_id arm_
 set_global_assignment -name EDA_TEST_BENCH_FILE arm_tb.sv -section_id arm_tb
 set_location_assignment PIN_V16 -to led_success
 set_location_assignment PIN_AC12 -to reset
-set_location_assignment PIN_AE26 -to s0[0]
-set_location_assignment PIN_AE27 -to s0[1]
-set_location_assignment PIN_AE28 -to s0[2]
-set_location_assignment PIN_AG27 -to s0[3]
-set_location_assignment PIN_AF28 -to s0[4]
-set_location_assignment PIN_AG28 -to s0[5]
-set_location_assignment PIN_AH28 -to s0[6]
-set_location_assignment PIN_AJ29 -to s1[0]
-set_location_assignment PIN_AH29 -to s1[1]
-set_location_assignment PIN_AH30 -to s1[2]
-set_location_assignment PIN_AG30 -to s1[3]
-set_location_assignment PIN_AF29 -to s1[4]
-set_location_assignment PIN_AF30 -to s1[5]
-set_location_assignment PIN_AD27 -to s1[6]
-set_location_assignment PIN_AB23 -to s2[0]
-set_location_assignment PIN_AE29 -to s2[1]
-set_location_assignment PIN_AD29 -to s2[2]
-set_location_assignment PIN_AC28 -to s2[3]
-set_location_assignment PIN_AD30 -to s2[4]
-set_location_assignment PIN_AC29 -to s2[5]
-set_location_assignment PIN_AC30 -to s2[6]
-set_location_assignment PIN_AD26 -to s3[0]
-set_location_assignment PIN_AC27 -to s3[1]
-set_location_assignment PIN_AD25 -to s3[2]
-set_location_assignment PIN_AC25 -to s3[3]
-set_location_assignment PIN_AB28 -to s3[4]
-set_location_assignment PIN_AB25 -to s3[5]
-set_location_assignment PIN_AB22 -to s3[6]
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top

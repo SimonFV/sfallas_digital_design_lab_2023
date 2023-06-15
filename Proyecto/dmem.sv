@@ -22,7 +22,7 @@ module dmem(input logic clk,
 	logic [31:0] wd_b = 32'd_0;
 	logic we_b = 0;
 	
-	RAM2 iram(_a, b[18:2],
+	RAM2 iram(_a, b[16:0],
 				 clk, 
 				 wd_a, wd_b, 
 				 we_a, we_b,

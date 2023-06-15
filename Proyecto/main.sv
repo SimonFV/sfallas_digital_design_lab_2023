@@ -3,8 +3,7 @@ module main(input logic clk_50Mhz_in, reset,
 				output VGA_HS, VGA_VS, 
 				output [7:0] VGA_R, VGA_G, VGA_B, 
 				output VGA_SYNC_N, VGA_CLK, VGA_BLANK_N,
-					
-				output logic [6:0] s0, s1, s2,s3,
+	
 				output logic led_success);
 	
 	logic [31:0] WriteData, DataAdrA, DataAdrB;

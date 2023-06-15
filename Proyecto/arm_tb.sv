@@ -4,7 +4,6 @@ module arm_tb();
 
 	logic clk;
 	logic reset;
-	logic [6:0] s0, s1, s2,s3;
 	logic led_success;
 	
 	logic h_sync, v_sync;
@@ -18,7 +17,6 @@ module arm_tb();
 				red_out, green_out, blue_out,
 				sync_n_out, clk_out, blank_out,
 				
-				s0, s1, s2,s3,
 				led_success);
 	
 	// initialize test
