@@ -62,7 +62,7 @@ module main(input logic clk_50Mhz_in, reset,
 	
 	// Driver VGA (para mostrar las dos imagenes en pantalla)
 	vga_driver draw(clk_25Mhz, reset_vga, pixel_color,
-						 VGA_HS, VGA_VS, 
+						 VGA_HS, VGA_VS,
 						 VGA_R, VGA_G, VGA_B, 
 						 VGA_SYNC_N, VGA_CLK, VGA_BLANK_N,
 						 next_x, next_y);
@@ -72,32 +72,17 @@ module main(input logic clk_50Mhz_in, reset,
 		clk_25Mhz <= ~clk_25Mhz;
 	
 	
-	
-	
-	
-	
-	
-	display7 d0(PC[3:0] % 4'd_10, s0);
-	display7 d1((PC[3:0]/10) % 4'd_10, s1);
-	display7 d2((PC[3:0]/100) % 4'd_10, s2);
-	display7 d3(ReadDataA[3:0] % 4'd_10, s3);
-	
+	// Detiene el procesador cuando termina la tarea de ecualizacion
 	always_comb begin
 		
-		if(PC > 32'd_360) clk_50Mhz_ARM = 0;
-		else clk_50Mhz_ARM = clk_50Mhz_in;
-		
-		/*
-		if(DataAdr === 100 & WriteData === 7) begin
+		if(PC > 32'd_408) begin 
+			clk_50Mhz_ARM = 0;
 			led_success = 1;
-		end 
+		end
 		else begin
+			clk_50Mhz_ARM = clk_50Mhz_in;
 			led_success = 0;
 		end
-		*/
-		
 	end
-	
-	assign led_success = 0;
 	
 endmodule
